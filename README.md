@@ -4,9 +4,13 @@ Site de feliz aniversário — uma cartinha de presente interativa, pensada
 primeiro para smartphones (proporção 9:16).
 
 A tela inicial mostra um envelope branco fechado, com selo de cera preta e um
-pingente, cercado por ornamentos minimalistas em preto e cinza. Ao tocar na
-carta, a aba do envelope se abre, o selo se desprende e o conteúdo do presente
-aparece suavemente.
+pingente, cercado por ornamentos minimalistas em preto e cinza.
+
+Ao tocar na carta, um coração é desenhado no centro da tela: o traço vermelho
+"nasce" no meio, sobe formando o lado esquerdo, cruza para a direita e fecha o
+coração — com um rastro roxo mais forte logo atrás. Em seguida a aba do
+envelope se abre, o selo se desprende e o conteúdo do presente aparece
+suavemente.
 
 ## Estrutura
 

@@ -22,6 +22,7 @@
   const stage = document.getElementById("stage");
   const letter = document.getElementById("letter");
   const decoField = document.getElementById("decoField");
+  const heart = document.getElementById("heart");
   const reveal = document.getElementById("reveal");
   const revealEyebrow = document.getElementById("revealEyebrow");
   const revealName = document.getElementById("revealName");
@@ -130,24 +131,38 @@
     audioEl.play().catch(() => {});
   }
 
+  /* ---------------------------------------------------------------------
+     Coração desenhado ao toque: o traço vermelho "nasce" no meio, sobe
+     formando o lado esquerdo, cruza para a direita e fecha o coração.
+     O rastro roxo corre logo atrás, mais forte.
+     --------------------------------------------------------------------- */
+  function drawHeart() {
+    heart.classList.remove("is-active");
+    // reinicia as animações (força o navegador a recalcular)
+    void heart.offsetWidth;
+    heart.classList.add("is-active");
+  }
+
   function openLetter() {
     if (isOpen) return;
     isOpen = true;
 
+    drawHeart();
     stage.classList.add("is-open");
     startAudio();
 
-    // revela o conteúdo do presente logo após o início da animação
+    // revela o conteúdo do presente depois do coração se formar
     window.setTimeout(() => {
       reveal.classList.add("is-visible");
       reveal.setAttribute("aria-hidden", "false");
-    }, 850);
+    }, 1750);
   }
 
   function closeLetter() {
     if (!isOpen) return;
     isOpen = false;
 
+    heart.classList.remove("is-active");
     reveal.classList.remove("is-visible");
     reveal.setAttribute("aria-hidden", "true");
 

@@ -350,6 +350,65 @@ body {
 .reveal__close:hover { color: var(--ink); border-color: var(--line-strong); }
 
 /* --------------------------------------------------------------------------
+   Animação de coração desenhado
+   -------------------------------------------------------------------------- */
+.heart {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.heart.is-active { opacity: 1; }
+
+.heart__svg {
+  width: min(64vw, 300px);
+  height: min(64vw, 300px);
+  overflow: visible;
+}
+
+.heart__red,
+.heart__purple {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* comprimento aproximado do traço, para o efeito de desenho */
+  stroke-dasharray: 430;
+  stroke-dashoffset: 430;
+}
+
+/* rastro roxo, mais forte, atrás do vermelho */
+.heart__purple {
+  stroke: #7b2ff7;
+  stroke-width: 15;
+  opacity: 0.85;
+  filter: url(#purpleGlow);
+}
+
+/* traço vermelho que desenha o coração */
+.heart__red {
+  stroke: #e8102d;
+  stroke-width: 7;
+}
+
+/* o vermelho lidera o traço; o roxo corre logo atrás, criando o rastro */
+.heart.is-active .heart__red {
+  animation: drawHeart 1.5s cubic-bezier(0.45, 0.05, 0.35, 1) 0s forwards;
+}
+.heart.is-active .heart__purple {
+  animation: drawHeart 1.5s cubic-bezier(0.45, 0.05, 0.35, 1) 0.18s forwards;
+}
+
+@keyframes drawHeart {
+  0%   { stroke-dashoffset: 430; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* --------------------------------------------------------------------------
    Animações de abertura da carta
    -------------------------------------------------------------------------- */
 #topFlap {
