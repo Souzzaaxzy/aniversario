@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Uma cartinha especial guarda o seu presente." />
+  <title>seu presente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- biblioteca de símbolos reutilizáveis -->
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- estrela de quatro pontas: pontas verticais mais longas que as horizontais -->
+      <symbol id="star4" viewBox="0 0 24 32">
+        <path d="M12 0 Q12.6 15.4 24 16 Q12.6 16.6 12 32 Q11.4 16.6 0 16 Q11.4 15.4 12 0 Z" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <main class="stage" id="stage">
+
+    <!-- ornamento superior -->
+    <div class="ornament ornament--top" aria-hidden="true">
+      <span class="ornament__line"></span>
+      <svg class="ornament__star" viewBox="0 0 24 32"><use href="#star4" /></svg>
+      <span class="ornament__dot"></span>
+    </div>
+
+    <!-- cena principal -->
+    <div class="scene" id="scene">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="deco-field" id="decoField" aria-hidden="true"></div>
+
+      <button class="letter" id="letter" type="button" aria-label="Toque na carta para abrir seu presente">
+        <svg class="letter__svg" viewBox="60 25 500 385" role="img" aria-hidden="true">
+          <defs>
+            <!-- papel -->
+            <linearGradient id="paper" x1="0.15" y1="0" x2="0.85" y2="1">
+              <stop offset="0" stop-color="#ffffff" />
+              <stop offset="0.5" stop-color="#f5f5f3" />
+              <stop offset="1" stop-color="#e5e5e1" />
+            </linearGradient>
+            <linearGradient id="flap" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff" />
+              <stop offset="0.72" stop-color="#f0f0ed" />
+              <stop offset="1" stop-color="#dcdcd8" />
+            </linearGradient>
+            <linearGradient id="lowerFlap" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ececea" />
+              <stop offset="1" stop-color="#dcdcd8" />
+            </linearGradient>
+            <linearGradient id="sideL" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#e6e6e3" />
+              <stop offset="1" stop-color="#f4f4f2" />
+            </linearGradient>
+            <linearGradient id="sideR" x1="1" y1="0" x2="0" y2="0">
+              <stop offset="0" stop-color="#e6e6e3" />
+              <stop offset="1" stop-color="#f4f4f2" />
+            </linearGradient>
+
+            <!-- cera preta -->
+            <radialGradient id="wax" cx="0.42" cy="0.32" r="0.78">
+              <stop offset="0" stop-color="#3b3b3b" />
+              <stop offset="0.45" stop-color="#1c1c1c" />
+              <stop offset="0.82" stop-color="#0d0d0d" />
+              <stop offset="1" stop-color="#050505" />
+            </radialGradient>
+            <radialGradient id="waxGloss" cx="0.38" cy="0.24" r="0.42">
+              <stop offset="0" stop-color="#ffffff" stop-opacity="0.34" />
+              <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+            </radialGradient>
+
+            <!-- metal do pingente -->
+            <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0.2">
+              <stop offset="0" stop-color="#0a0a0a" />
+              <stop offset="0.32" stop-color="#3d3d3d" />
+              <stop offset="0.5" stop-color="#1a1a1a" />
+              <stop offset="0.68" stop-color="#333333" />
+              <stop offset="1" stop-color="#070707" />
+            </linearGradient>
+
+            <!-- sombra difusa sob o envelope -->
+            <filter id="dropShadow" x="-40%" y="-40%" width="180%" height="200%">
+              <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#a9a9a4" flood-opacity="0.55" />
+              <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#bdbdb8" flood-opacity="0.35" />
+            </filter>
+
+            <!-- sombra fina das dobras -->
+            <filter id="foldSoft" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#b6b6b1" flood-opacity="0.5" />
+            </filter>
+            <filter id="sealShadow" x="-80%" y="-80%" width="260%" height="260%">
+              <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#6f6f6a" flood-opacity="0.45" />
+            </filter>
+            <filter id="pendantShadow" x="-120%" y="-60%" width="340%" height="240%">
+              <feDropShadow dx="0" dy="3" stdDeviation="2.6" flood-color="#8a8a85" flood-opacity="0.5" />
+            </filter>
+
+            <!-- grão de papel -->
+            <filter id="grain" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n" />
+              <feColorMatrix in="n" type="saturate" values="0" />
+              <feComponentTransfer><feFuncA type="linear" slope="0.05" /></feComponentTransfer>
+            </filter>
+
+            <clipPath id="bodyClip">
+              <rect x="70" y="50" width="480" height="320" rx="5" />
+            </clipPath>
+          </defs>
+
+          <!-- ================= ENVELOPE ================= -->
+          <g id="envelope" filter="url(#dropShadow)">
+
+            <!-- corpo -->
+            <rect x="70" y="50" width="480" height="320" rx="5" fill="url(#paper)" />
+
+            <!-- abas laterais e inferior (a composição em X) -->
+            <g clip-path="url(#bodyClip)">
+              <polygon points="70,370 310,210 70,210" fill="url(#sideL)" opacity="0.75" />
+              <polygon points="550,370 310,210 550,210" fill="url(#sideR)" opacity="0.75" />
+              <polygon points="70,370 550,370 310,210" fill="url(#lowerFlap)" />
+            </g>
+
+            <!-- grão sutil sobre o corpo -->
+            <rect x="70" y="50" width="480" height="320" rx="5" filter="url(#grain)" opacity="0.6" />
+
+            <!-- linhas das dobras: dos cantos ao centro (o X) -->
+            <g class="folds" filter="url(#foldSoft)" stroke="#bdbdb7" stroke-width="1.2" fill="none" opacity="0.9">
+              <line x1="70" y1="370" x2="310" y2="210" />
+              <line x1="550" y1="370" x2="310" y2="210" />
+            </g>
+
+            <!-- aba superior triangular, dobrada para baixo -->
+            <g id="topFlap" filter="url(#foldSoft)">
+              <polygon points="70,50 550,50 310,224" fill="url(#flap)" />
+              <polyline points="70,50 310,224 550,50" fill="none" stroke="#c2c2bc" stroke-width="1.2" opacity="0.9" />
+            </g>
+
+            <!-- contorno geral do envelope -->
+            <rect x="70" y="50" width="480" height="320" rx="5" fill="none" stroke="#c4c4be" stroke-width="1.2" opacity="0.85" />
+          </g>
+
+          <!-- ================= SELO DE CERA ================= -->
+          <g id="sealGroup" filter="url(#sealShadow)">
+            <!-- borda irregular da cera -->
+            <path id="sealBlob" fill="url(#wax)"
+              d="M310 150
+                 c26 -1 44 12 47 30 c4 15 -3 27 2 39 c5 12 -8 24 -26 27
+                 c-16 3 -31 -2 -45 1 c-15 3 -29 -6 -33 -21 c-4 -13 1 -25 -3 -37
+                 c-4 -13 6 -28 24 -33 c12 -4 22 -6 34 -6 Z" />
+            <path d="M310 150 c26 -1 44 12 47 30 c4 15 -3 27 2 39 c5 12 -8 24 -26 27 c-16 3 -31 -2 -45 1 c-15 3 -29 -6 -33 -21 c-4 -13 1 -25 -3 -37 c-4 -13 6 -28 24 -33 c12 -4 22 -6 34 -6 Z"
+              fill="url(#waxGloss)" />
+            <!-- realce superior -->
+            <ellipse cx="298" cy="176" rx="26" ry="14" fill="#ffffff" opacity="0.06" />
+            <!-- estrela central -->
+            <g transform="translate(310 210)">
+              <svg x="-15" y="-20" width="30" height="40" viewBox="0 0 24 32">
+                <use href="#star4" fill="#f2f2ef" />
+              </svg>
+            </g>
+          </g>
+
+          <!-- ================= PINGENTE ================= -->
+          <g id="pendant" filter="url(#pendantShadow)" stroke="url(#metal)" fill="none"
+             stroke-linecap="round" stroke-linejoin="round">
+            <line x1="310" y1="262" x2="310" y2="286" stroke-width="2.2" />
+            <path d="M310 286 c9 0 14 6 14 13 c0 6 -4 10 -9 11 l0 8 l-10 0 l0 -8 c-5 -1 -9 -5 -9 -11 c0 -7 5 -13 14 -13 Z"
+              fill="url(#metal)" stroke="none" />
+            <line x1="310" y1="318" x2="310" y2="336" stroke-width="1.8" />
+            <path d="M310 340 l4 6 l-4 6 l-4 -6 Z" fill="url(#metal)" stroke="none" />
+            <line x1="310" y1="352" x2="310" y2="366" stroke-width="1.4" opacity="0.9" />
+          </g>
+        </svg>
+      </button>
+    </div>
+
+    <!-- convite para interação -->
+    <p class="hint" id="hint">toque na carta para abrir<br />seu presente</p>
+
+    <!-- divisor ornamental -->
+    <div class="divider" aria-hidden="true">
+      <span class="divider__line"></span>
+      <svg class="divider__star" viewBox="0 0 24 32"><use href="#star4" /></svg>
+      <span class="divider__line"></span>
+    </div>
+
+    <!-- ornamento inferior -->
+    <div class="ornament ornament--bottom" aria-hidden="true">
+      <span class="ornament__line"></span>
+      <svg class="ornament__star" viewBox="0 0 24 32"><use href="#star4" /></svg>
+      <span class="ornament__dot"></span>
+    </div>
+
+  </main>
+
+  <!-- ================= CONTEÚDO DO PRESENTE ================= -->
+  <section class="reveal" id="reveal" aria-hidden="true">
+    <div class="reveal__inner">
+      <div class="reveal__ornament" aria-hidden="true">
+        <svg class="reveal__star" viewBox="0 0 24 32"><use href="#star4" /></svg>
+      </div>
+      <p class="reveal__eyebrow" id="revealEyebrow">para você</p>
+      <h1 class="reveal__name" id="revealName">Feliz aniversário</h1>
+      <div class="reveal__rule" aria-hidden="true"></div>
+      <p class="reveal__message" id="revealMessage"></p>
+      <div class="reveal__rule" aria-hidden="true"></div>
+      <button class="reveal__close" id="revealClose" type="button">fechar a carta</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
