@@ -136,11 +136,20 @@
      formando o lado esquerdo, cruza para a direita e fecha o coração.
      O rastro roxo corre logo atrás, mais forte.
      --------------------------------------------------------------------- */
+  const heartHeadAnim = document.getElementById("heartHeadAnim");
+
   function drawHeart() {
     heart.classList.remove("is-active");
     // reinicia as animações (força o navegador a recalcular)
     void heart.offsetWidth;
     heart.classList.add("is-active");
+
+    // ponta de luz que percorre o desenho
+    if (heartHeadAnim) {
+      try {
+        heartHeadAnim.beginElement();
+      } catch (e) { /* navegador sem SMIL — o traço ainda é desenhado */ }
+    }
   }
 
   function openLetter() {
@@ -155,7 +164,7 @@
     window.setTimeout(() => {
       reveal.classList.add("is-visible");
       reveal.setAttribute("aria-hidden", "false");
-    }, 1750);
+    }, 2050);
   }
 
   function closeLetter() {

@@ -350,7 +350,8 @@ body {
 .reveal__close:hover { color: var(--ink); border-color: var(--line-strong); }
 
 /* --------------------------------------------------------------------------
-   Animação de coração desenhado
+   Animação de coração desenhado — filamento luminoso
+   Traço fino, cor em degradê, brilho suave e ponta de luz que percorre.
    -------------------------------------------------------------------------- */
 .heart {
   position: fixed;
@@ -361,50 +362,74 @@ body {
   justify-content: center;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.45s ease;
+  transition: opacity 0.5s ease;
 }
 .heart.is-active { opacity: 1; }
 
 .heart__svg {
-  width: min(64vw, 300px);
-  height: min(64vw, 300px);
+  width: min(66vw, 320px);
+  height: min(66vw, 320px);
   overflow: visible;
 }
 
+.heart__aura,
+.heart__purple,
 .heart__red,
-.heart__purple {
+.heart__core {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  /* comprimento aproximado do traço, para o efeito de desenho */
-  stroke-dasharray: 430;
-  stroke-dashoffset: 430;
+  /* traçado que se desenha (pathLength=100 no SVG) */
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  vector-effect: non-scaling-stroke;
 }
 
-/* rastro roxo, mais forte, atrás do vermelho */
+/* aura roxa contida, só um halo atrás de tudo */
+.heart__aura {
+  stroke: #7d3bff;
+  stroke-width: 10;
+  opacity: 0.22;
+  filter: url(#heartGlowBig);
+}
+
+/* rastro roxo, mais forte */
 .heart__purple {
-  stroke: #7b2ff7;
-  stroke-width: 15;
+  stroke: url(#heartPurple);
+  stroke-width: 5.5;
   opacity: 0.85;
-  filter: url(#purpleGlow);
+  filter: url(#heartGlowSoft);
 }
 
 /* traço vermelho que desenha o coração */
 .heart__red {
-  stroke: #e8102d;
-  stroke-width: 7;
+  stroke: url(#heartRed);
+  stroke-width: 3.2;
+  filter: url(#heartGlowSoft);
 }
 
-/* o vermelho lidera o traço; o roxo corre logo atrás, criando o rastro */
-.heart.is-active .heart__red {
-  animation: drawHeart 1.5s cubic-bezier(0.45, 0.05, 0.35, 1) 0s forwards;
+/* fio de luz sobre o traço, dá o aspecto vítreo */
+.heart__core {
+  stroke: #ffffff;
+  stroke-width: 1.1;
+  opacity: 0.9;
 }
-.heart.is-active .heart__purple {
-  animation: drawHeart 1.5s cubic-bezier(0.45, 0.05, 0.35, 1) 0.18s forwards;
+
+/* o vermelho lidera; o roxo corre logo atrás; o fio de luz acompanha */
+.heart.is-active .heart__aura   { animation: drawHeart 1.7s cubic-bezier(0.45,0.05,0.35,1) 0.20s forwards; }
+.heart.is-active .heart__purple { animation: drawHeart 1.7s cubic-bezier(0.45,0.05,0.35,1) 0.16s forwards; }
+.heart.is-active .heart__red    { animation: drawHeart 1.7s cubic-bezier(0.45,0.05,0.35,1) 0.02s forwards; }
+.heart.is-active .heart__core   { animation: drawHeart 1.7s cubic-bezier(0.45,0.05,0.35,1) 0.02s forwards; }
+
+/* ponta luminosa */
+.heart__head {
+  opacity: 0;
+  filter: url(#heartGlowSoft);
 }
+.heart.is-active .heart__head { opacity: 1; }
 
 @keyframes drawHeart {
-  0%   { stroke-dashoffset: 430; }
+  0%   { stroke-dashoffset: 100; }
   100% { stroke-dashoffset: 0; }
 }
 
