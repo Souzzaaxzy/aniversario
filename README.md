@@ -6,11 +6,12 @@ primeiro para smartphones (proporção 9:16).
 A tela inicial mostra um envelope branco fechado, com selo de cera preta e um
 pingente, cercado por ornamentos minimalistas em preto e cinza.
 
-Ao tocar na carta, um coração é desenhado no centro da tela: o traço vermelho
-"nasce" no meio, sobe formando o lado esquerdo, cruza para a direita e fecha o
-coração — com um rastro roxo mais forte logo atrás. Em seguida a aba do
-envelope se abre, o selo se desprende e o conteúdo do presente aparece
-suavemente.
+Ao tocar na carta, um coração é desenhado **por fora, envolvendo a carta**: o
+traço vermelho "nasce" no meio, sobe formando o lado esquerdo, cruza para a
+direita e fecha o coração — com um rastro roxo mais forte logo atrás.
+
+Quando o coração termina, a carta desaparece e abre uma **página toda branca**
+(a seção `#whitepage`), pronta para receber o conteúdo depois.
 
 ## Estrutura
 
@@ -39,24 +40,21 @@ npx serve .
 Depois abra `http://localhost:8000` e use o modo responsivo do navegador
 (ex.: iPhone) para ver a proporção 9:16.
 
-## Personalizar o presente
+## Personalizar
 
-Abra `script.js` e edite o objeto `GIFT` no topo do arquivo:
+**Página branca (destino):** é a seção `#whitepage` no `index.html`. Está vazia
+de propósito — é onde vamos colocar o conteúdo depois.
+
+**Música:** em `script.js`, preencha `GIFT.audio`:
 
 ```js
 const GIFT = {
-  eyebrow: "para você",
-  name: "Feliz aniversário",
-  message: "escreva aqui a sua mensagem...",
-  audio: "" // coloque o nome do arquivo de música, ex.: "musica.mp3"
+  audio: "" // ex.: "musica.mp3"
 };
 ```
 
-- `name` — o título que aparece depois de abrir a carta.
-- `message` — a mensagem. Use `\n` para quebrar linhas.
-- `audio` — se preencher, a música começa **depois** do toque do usuário
-  (assim o navegador permite a reprodução automática). Coloque o arquivo de
-  áudio na raiz do projeto.
+Se preencher, a música começa **depois** do toque do usuário (assim o navegador
+permite a reprodução automática). Coloque o arquivo de áudio na raiz do projeto.
 
 ## Publicar no Cloudflare Pages
 

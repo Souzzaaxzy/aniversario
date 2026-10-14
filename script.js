@@ -7,15 +7,10 @@
 
   /* ---------------------------------------------------------------------
      Conteúdo do presente
-     Edite aqui o nome, a mensagem e (se quiser) o áudio de fundo.
+     A página branca (id "whitepage") fica vazia por enquanto, para
+     preenchermos depois. O áudio de fundo já pode ser definido aqui.
      --------------------------------------------------------------------- */
   const GIFT = {
-    eyebrow: "para você",
-    name: "Feliz aniversário",
-    message:
-      "que este novo ano da sua vida venha leve, cheio de coisas boas\n" +
-      "e de tudo aquilo que faz os seus olhos brilharem.\n" +
-      "obrigado por existir. feliz aniversário.",
     audio: "" // ex.: "musica.mp3" — toca após o toque do usuário
   };
 
@@ -23,11 +18,7 @@
   const letter = document.getElementById("letter");
   const decoField = document.getElementById("decoField");
   const heart = document.getElementById("heart");
-  const reveal = document.getElementById("reveal");
-  const revealEyebrow = document.getElementById("revealEyebrow");
-  const revealName = document.getElementById("revealName");
-  const revealMessage = document.getElementById("revealMessage");
-  const revealClose = document.getElementById("revealClose");
+  const whitepage = document.getElementById("whitepage");
 
   const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -157,43 +148,24 @@
     isOpen = true;
 
     drawHeart();
-    stage.classList.add("is-open");
     startAudio();
 
-    // revela o conteúdo do presente depois do coração se formar
+    // 1) quando o coração termina, ele sai e a carta desaparece
     window.setTimeout(() => {
-      reveal.classList.add("is-visible");
-      reveal.setAttribute("aria-hidden", "false");
-    }, 2050);
-  }
+      heart.classList.add("is-leaving");
+      stage.classList.add("is-leaving");
+    }, 2000);
 
-  function closeLetter() {
-    if (!isOpen) return;
-    isOpen = false;
-
-    heart.classList.remove("is-active");
-    reveal.classList.remove("is-visible");
-    reveal.setAttribute("aria-hidden", "true");
-
+    // 2) em seguida abre a página branca
     window.setTimeout(() => {
-      stage.classList.remove("is-open");
-      letter.focus({ preventScroll: true });
-    }, 700);
+      whitepage.classList.add("is-visible");
+      whitepage.setAttribute("aria-hidden", "false");
+    }, 2750);
   }
 
   function init() {
     buildDecorations();
-
-    revealEyebrow.textContent = GIFT.eyebrow;
-    revealName.textContent = GIFT.name;
-    revealMessage.textContent = GIFT.message;
-
     letter.addEventListener("click", openLetter);
-    revealClose.addEventListener("click", closeLetter);
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeLetter();
-    });
   }
 
   if (document.readyState === "loading") {
