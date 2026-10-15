@@ -217,9 +217,10 @@
               <stop offset="0" stop-color="#f8d8b6" />
               <stop offset="1" stop-color="#eec19a" />
             </linearGradient>
-            <linearGradient id="boyHair" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#33333a" />
-              <stop offset="1" stop-color="#1b1b20" />
+            <linearGradient id="boyHair" x1="0" y1="0" x2="0.2" y2="1">
+              <stop offset="0" stop-color="#8d8d97" />
+              <stop offset="0.45" stop-color="#5c5c66" />
+              <stop offset="1" stop-color="#2a2a30" />
             </linearGradient>
             <radialGradient id="boyCheek" cx="0.5" cy="0.5" r="0.5">
               <stop offset="0" stop-color="#f28a97" stop-opacity="0.55" />
@@ -239,7 +240,7 @@
           <!-- sombra suave na base da cabeça -->
           <path d="M40 92 Q80 128 120 92 Q80 112 40 92 Z" fill="#e2b183" opacity="0.35" />
 
-          <!-- cabelo cacheado/ondulado -->
+          <!-- cabelo cacheado/ondulado, com gradiente cinza -->
           <path d="M26 58 A54 54 0 0 1 134 58 Q120 72 80 72 Q40 72 26 58 Z" fill="url(#boyHair)" />
           <g fill="url(#boyHair)">
             <circle cx="38" cy="56" r="14" />
@@ -247,6 +248,14 @@
             <circle cx="80" cy="40" r="15" />
             <circle cx="102" cy="44" r="15" />
             <circle cx="122" cy="56" r="14" />
+          </g>
+          <!-- ondinhas / cachos -->
+          <g fill="none" stroke="#9a9aa6" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
+            <path d="M30 46 q6 -6 12 0 q6 6 12 0" />
+            <path d="M62 36 q6 -6 12 0 q6 6 12 0" />
+            <path d="M94 42 q6 -6 12 0 q6 6 12 0" />
+            <path d="M26 56 q5 -5 10 0" />
+            <path d="M124 56 q5 -5 10 0" />
           </g>
 
           <!-- olhos enormes e baixos (olhando à direita) -->
@@ -284,10 +293,10 @@
             </radialGradient>
           </defs>
 
-          <!-- cabelo liso, comprido, cobrindo atrás da cabeça -->
-          <path d="M26 72 A54 54 0 0 1 134 72 L134 140 Q134 148 126 142 L126 84 Q126 62 80 62 Q34 62 34 84 L34 142 Q26 148 26 140 Z" fill="url(#girlHair)" />
+          <!-- cabelo liso, comprido: bloco cheio cobrindo atrás da cabeça -->
+          <path d="M24 72 A56 56 0 0 1 136 72 L136 152 Q80 172 24 152 Z" fill="url(#girlHair)" />
           <!-- mechas lisas -->
-          <path d="M40 66 L40 140 M120 66 L120 140" fill="none" stroke="#5a4034" stroke-width="1.6" stroke-linecap="round" opacity="0.55" />
+          <path d="M44 70 L44 150 M116 70 L116 150 M80 126 L80 164" fill="none" stroke="#5a4034" stroke-width="1.6" stroke-linecap="round" opacity="0.45" />
 
           <!-- vestido -->
           <path d="M80 134 C62 134 53 160 48 200 L112 200 C107 160 98 134 80 134 Z" fill="url(#girlDress)" />
