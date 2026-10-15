@@ -207,117 +207,116 @@
       <!-- dois personagens apoiados no topo do card, olhando um para o outro -->
       <div class="couple" aria-hidden="true">
         <!-- menino (à esquerda, olhando para a direita) -->
-        <svg class="couple__char couple__char--boy" viewBox="0 0 140 176">
+        <svg class="couple__char couple__char--boy" viewBox="0 0 160 200">
           <defs>
             <linearGradient id="boyShirt" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#33333a" />
-              <stop offset="1" stop-color="#111114" />
+              <stop offset="0" stop-color="#3a3a42" />
+              <stop offset="1" stop-color="#131316" />
             </linearGradient>
-            <linearGradient id="boySkin" x1="0.3" y1="0" x2="0.75" y2="1">
-              <stop offset="0" stop-color="#f7d2ac" />
-              <stop offset="1" stop-color="#e8b689" />
+            <linearGradient id="boySkin" x1="0.3" y1="0" x2="0.8" y2="1">
+              <stop offset="0" stop-color="#f8d8b6" />
+              <stop offset="1" stop-color="#eec19a" />
+            </linearGradient>
+            <linearGradient id="boyHair" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#33333a" />
+              <stop offset="1" stop-color="#1b1b20" />
             </linearGradient>
             <radialGradient id="boyCheek" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stop-color="#ef9d92" stop-opacity="0.5" />
-              <stop offset="1" stop-color="#ef9d92" stop-opacity="0" />
+              <stop offset="0" stop-color="#f28a97" stop-opacity="0.55" />
+              <stop offset="1" stop-color="#f28a97" stop-opacity="0" />
             </radialGradient>
           </defs>
 
-          <!-- tronco (blusa sem gola) -->
-          <path d="M38 176 C38 130 49 108 70 108 C91 108 102 130 102 176 Z" fill="url(#boyShirt)" />
-          <!-- decote arredondado, sem gola -->
-          <path d="M58 110 Q70 121 82 110" fill="none" stroke="#4a4a52" stroke-width="2.2" stroke-linecap="round" />
+          <!-- corpo (corpo menor que a cabeça) -->
+          <path d="M46 200 C46 156 57 134 80 134 C103 134 114 156 114 200 Z" fill="url(#boyShirt)" />
           <!-- braços apoiados no card -->
-          <path d="M90 122 C108 137 113 156 109 176" fill="none" stroke="url(#boySkin)" stroke-width="12" stroke-linecap="round" />
-          <path d="M50 122 C32 137 27 156 31 176" fill="none" stroke="url(#boySkin)" stroke-width="12" stroke-linecap="round" />
-          <!-- pescoço -->
-          <rect x="62" y="88" width="16" height="26" rx="8" fill="#e6b487" />
-          <!-- cabeça -->
-          <ellipse cx="70" cy="62" rx="33" ry="35" fill="url(#boySkin)" />
-          <!-- sombra do queixo -->
-          <path d="M54 80 Q70 96 86 80 Q70 90 54 80 Z" fill="#dda878" opacity="0.35" />
+          <path d="M104 150 C120 162 123 182 118 200" fill="none" stroke="url(#boySkin)" stroke-width="13" stroke-linecap="round" />
+          <path d="M56 150 C40 162 37 182 42 200" fill="none" stroke="url(#boySkin)" stroke-width="13" stroke-linecap="round" />
+          <!-- pescoço curto -->
+          <rect x="72" y="118" width="16" height="22" rx="8" fill="#e7bd91" />
+          <!-- cabeça (esfera grande) -->
+          <circle cx="80" cy="72" r="54" fill="url(#boySkin)" />
+          <!-- sombra suave na base da cabeça -->
+          <path d="M40 92 Q80 128 120 92 Q80 112 40 92 Z" fill="#e2b183" opacity="0.35" />
 
-          <!-- cabelo ondulado / cacheado -->
-          <path d="M36 58 C29 40 38 24 53 25 C59 16 79 16 87 25 C102 24 111 40 104 58
-                   C101 46 93 42 85 45 C79 38 61 38 55 45 C47 42 39 46 36 58 Z" fill="#2b2b30" />
-          <path d="M50 30 q7 -5 14 -2 q7 -4 14 1 q7 -2 12 4" fill="none" stroke="#4b4b54" stroke-width="1.8" stroke-linecap="round" />
-          <circle cx="45" cy="40" r="7" fill="#2b2b30" />
-          <circle cx="95" cy="40" r="7" fill="#2b2b30" />
+          <!-- cabelo cacheado/ondulado -->
+          <path d="M26 58 A54 54 0 0 1 134 58 Q120 72 80 72 Q40 72 26 58 Z" fill="url(#boyHair)" />
+          <g fill="url(#boyHair)">
+            <circle cx="38" cy="56" r="14" />
+            <circle cx="58" cy="44" r="15" />
+            <circle cx="80" cy="40" r="15" />
+            <circle cx="102" cy="44" r="15" />
+            <circle cx="122" cy="56" r="14" />
+          </g>
 
-          <!-- sobrancelhas -->
-          <path d="M75 60 q5 -3 11 -1" fill="none" stroke="#3a3a42" stroke-width="2" stroke-linecap="round" />
-          <path d="M89 59 q5 -2 11 -1" fill="none" stroke="#3a3a42" stroke-width="2" stroke-linecap="round" />
-          <!-- olhos (pequenos, olhando à direita) -->
-          <ellipse cx="80" cy="69" rx="3" ry="3.4" fill="#2b2b30" />
-          <ellipse cx="95" cy="69" rx="3" ry="3.4" fill="#2b2b30" />
-          <circle cx="81.1" cy="67.8" r="1" fill="#ffffff" />
-          <circle cx="96.1" cy="67.8" r="1" fill="#ffffff" />
-          <!-- nariz -->
-          <path d="M85 76 q3 3 5 0" fill="none" stroke="#cf9a6c" stroke-width="1.5" stroke-linecap="round" />
+          <!-- olhos enormes e baixos (olhando à direita) -->
+          <ellipse cx="94" cy="88" rx="9" ry="12.5" fill="#2b2b30" />
+          <ellipse cx="118" cy="88" rx="9" ry="12.5" fill="#2b2b30" />
+          <circle cx="97" cy="83" r="3.6" fill="#ffffff" />
+          <circle cx="121" cy="83" r="3.6" fill="#ffffff" />
+          <circle cx="91.5" cy="93" r="1.7" fill="#ffffff" opacity="0.85" />
+          <circle cx="115.5" cy="93" r="1.7" fill="#ffffff" opacity="0.85" />
           <!-- blush -->
-          <circle cx="76" cy="80" r="7" fill="url(#boyCheek)" />
-          <circle cx="99" cy="80" r="7" fill="url(#boyCheek)" />
-          <!-- sorriso -->
-          <path d="M82 81 q6 5 12 0" fill="none" stroke="#b9765a" stroke-width="2.4" stroke-linecap="round" />
+          <ellipse cx="86" cy="103" rx="9" ry="5.5" fill="url(#boyCheek)" />
+          <ellipse cx="128" cy="103" rx="9" ry="5.5" fill="url(#boyCheek)" />
+          <!-- boquinha -->
+          <path d="M100 105 q6 6 12 0" fill="none" stroke="#c07b62" stroke-width="2.6" stroke-linecap="round" />
         </svg>
 
         <!-- menina (à direita, olhando para a esquerda) -->
-        <svg class="couple__char couple__char--girl" viewBox="0 0 140 176">
+        <svg class="couple__char couple__char--girl" viewBox="0 0 160 200">
           <defs>
             <linearGradient id="girlDress" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#b487dd" />
               <stop offset="1" stop-color="#8a55bd" />
             </linearGradient>
-            <linearGradient id="girlSkin" x1="0.3" y1="0" x2="0.75" y2="1">
-              <stop offset="0" stop-color="#f7d2ac" />
-              <stop offset="1" stop-color="#e8b689" />
+            <linearGradient id="girlSkin" x1="0.3" y1="0" x2="0.8" y2="1">
+              <stop offset="0" stop-color="#f8d8b6" />
+              <stop offset="1" stop-color="#eec19a" />
             </linearGradient>
             <linearGradient id="girlHair" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#3d2b23" />
-              <stop offset="1" stop-color="#2c1d17" />
+              <stop offset="0" stop-color="#4a342a" />
+              <stop offset="1" stop-color="#2f1f18" />
             </linearGradient>
             <radialGradient id="girlCheek" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stop-color="#ef9d92" stop-opacity="0.5" />
-              <stop offset="1" stop-color="#ef9d92" stop-opacity="0" />
+              <stop offset="0" stop-color="#f28a97" stop-opacity="0.55" />
+              <stop offset="1" stop-color="#f28a97" stop-opacity="0" />
             </radialGradient>
           </defs>
 
-          <!-- cabelo liso atrás e ao lado da cabeça -->
-          <path d="M33 60 C33 26 107 26 107 60 L107 130 Q107 137 100 132 L100 76 Q100 58 70 58 Q40 58 40 76 L40 132 Q33 137 33 130 Z" fill="url(#girlHair)" />
+          <!-- cabelo liso, comprido, cobrindo atrás da cabeça -->
+          <path d="M26 72 A54 54 0 0 1 134 72 L134 140 Q134 148 126 142 L126 84 Q126 62 80 62 Q34 62 34 84 L34 142 Q26 148 26 140 Z" fill="url(#girlHair)" />
           <!-- mechas lisas -->
-          <path d="M45 56 L45 128 M95 56 L95 128" fill="none" stroke="#4a3229" stroke-width="1.6" stroke-linecap="round" opacity="0.6" />
+          <path d="M40 66 L40 140 M120 66 L120 140" fill="none" stroke="#5a4034" stroke-width="1.6" stroke-linecap="round" opacity="0.55" />
 
           <!-- vestido -->
-          <path d="M70 108 C54 108 45 137 39 176 L101 176 C95 137 86 108 70 108 Z" fill="url(#girlDress)" />
+          <path d="M80 134 C62 134 53 160 48 200 L112 200 C107 160 98 134 80 134 Z" fill="url(#girlDress)" />
           <!-- braços apoiados no card -->
-          <path d="M50 122 C32 137 27 156 31 176" fill="none" stroke="url(#girlSkin)" stroke-width="12" stroke-linecap="round" />
-          <path d="M90 122 C108 137 113 156 109 176" fill="none" stroke="url(#girlSkin)" stroke-width="12" stroke-linecap="round" />
-          <!-- pescoço -->
-          <rect x="62" y="88" width="16" height="26" rx="8" fill="#e6b487" />
-          <!-- cabeça -->
-          <ellipse cx="70" cy="62" rx="33" ry="35" fill="url(#girlSkin)" />
-          <!-- sombra do queixo -->
-          <path d="M54 80 Q70 96 86 80 Q70 90 54 80 Z" fill="#dda878" opacity="0.35" />
+          <path d="M56 150 C40 162 37 182 42 200" fill="none" stroke="url(#girlSkin)" stroke-width="13" stroke-linecap="round" />
+          <path d="M104 150 C120 162 123 182 118 200" fill="none" stroke="url(#girlSkin)" stroke-width="13" stroke-linecap="round" />
+          <!-- pescoço curto -->
+          <rect x="72" y="118" width="16" height="22" rx="8" fill="#e7bd91" />
+          <!-- cabeça (esfera grande) -->
+          <circle cx="80" cy="72" r="54" fill="url(#girlSkin)" />
+          <!-- sombra suave na base da cabeça -->
+          <path d="M40 92 Q80 128 120 92 Q80 112 40 92 Z" fill="#e2b183" opacity="0.35" />
 
           <!-- franja -->
-          <path d="M37 60 A33 35 0 0 1 103 60 Q100 44 70 44 Q40 44 37 60 Z" fill="url(#girlHair)" />
-          <path d="M52 40 q10 -6 20 -3 q10 -2 16 4" fill="none" stroke="#4a3229" stroke-width="1.6" stroke-linecap="round" opacity="0.7" />
+          <path d="M28 60 A54 54 0 0 1 132 60 Q120 74 80 74 Q40 74 28 60 Z" fill="url(#girlHair)" />
+          <path d="M46 48 q16 -10 34 -5 q18 -3 30 8" fill="none" stroke="#5a4034" stroke-width="1.8" stroke-linecap="round" opacity="0.7" />
 
-          <!-- sobrancelhas -->
-          <path d="M54 60 q6 -3 11 -1" fill="none" stroke="#3a2a22" stroke-width="2" stroke-linecap="round" />
-          <path d="M70 59 q6 -2 11 -1" fill="none" stroke="#3a2a22" stroke-width="2" stroke-linecap="round" />
-          <!-- olhos (pequenos, olhando à esquerda) -->
-          <ellipse cx="60" cy="69" rx="3" ry="3.4" fill="#33241d" />
-          <ellipse cx="45" cy="69" rx="3" ry="3.4" fill="#33241d" />
-          <circle cx="58.9" cy="67.8" r="1" fill="#ffffff" />
-          <circle cx="43.9" cy="67.8" r="1" fill="#ffffff" />
-          <!-- nariz -->
-          <path d="M52 76 q3 3 5 0" fill="none" stroke="#cf9a6c" stroke-width="1.5" stroke-linecap="round" />
+          <!-- olhos enormes e baixos (olhando à esquerda) -->
+          <ellipse cx="66" cy="88" rx="9" ry="12.5" fill="#33241d" />
+          <ellipse cx="42" cy="88" rx="9" ry="12.5" fill="#33241d" />
+          <circle cx="63" cy="83" r="3.6" fill="#ffffff" />
+          <circle cx="39" cy="83" r="3.6" fill="#ffffff" />
+          <circle cx="68.5" cy="93" r="1.7" fill="#ffffff" opacity="0.85" />
+          <circle cx="44.5" cy="93" r="1.7" fill="#ffffff" opacity="0.85" />
           <!-- blush -->
-          <circle cx="64" cy="80" r="7" fill="url(#girlCheek)" />
-          <circle cx="41" cy="80" r="7" fill="url(#girlCheek)" />
-          <!-- sorriso -->
-          <path d="M45 81 q6 5 12 0" fill="none" stroke="#b9765a" stroke-width="2.4" stroke-linecap="round" />
+          <ellipse cx="74" cy="103" rx="9" ry="5.5" fill="url(#girlCheek)" />
+          <ellipse cx="32" cy="103" rx="9" ry="5.5" fill="url(#girlCheek)" />
+          <!-- boquinha -->
+          <path d="M48 105 q6 6 12 0" fill="none" stroke="#c07b62" stroke-width="2.6" stroke-linecap="round" />
         </svg>
       </div>
 
