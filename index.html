@@ -200,12 +200,83 @@
 
   </main>
 
-  <!-- ================= PÁGINA BRANCA (destino) ================= -->
+  <!-- ================= PÁGINA BRANCA + PLAYER ================= -->
   <section class="whitepage" id="whitepage" aria-hidden="true">
     <div class="whitepage__inner" id="whitepageInner">
-      <!-- conteúdo a definir depois -->
+
+      <div class="player" role="group" aria-label="Reprodutor de música">
+
+        <!-- capa / foto -->
+        <div class="player__art">
+          <img class="player__cover" id="playerCover" src="photo.jpg" alt="" />
+        </div>
+
+        <!-- título e artista -->
+        <div class="player__meta">
+          <p class="player__title" id="playerTitle">here with me</p>
+          <p class="player__artist" id="playerArtist">para você</p>
+        </div>
+
+        <!-- barra de progresso com tempos -->
+        <div class="player__progress">
+          <span class="player__time" id="playerCurrent">0:00</span>
+          <div class="player__track" id="playerTrack">
+            <div class="player__fill" id="playerFill"></div>
+            <div class="player__knob" id="playerKnob"></div>
+          </div>
+          <span class="player__time" id="playerDuration">0:00</span>
+        </div>
+
+        <!-- controles -->
+        <div class="player__controls">
+          <!-- voltar -->
+          <button class="player__btn" type="button" aria-label="Voltar" tabindex="-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11.5 5.5 5 12l6.5 6.5" />
+              <path d="M18.5 5.5 12 12l6.5 6.5" />
+            </svg>
+          </button>
+
+          <!-- pausar / tocar -->
+          <button class="player__btn player__btn--play" id="playerToggle" type="button"
+                  aria-label="Pausar" tabindex="-1">
+            <svg class="player__icon player__icon--pause" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8" y="5" width="3" height="14" rx="1.2" />
+              <rect x="13" y="5" width="3" height="14" rx="1.2" />
+            </svg>
+            <svg class="player__icon player__icon--play" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5.2c0-.9 1-1.5 1.8-1L18 10c.8.5.8 1.6 0 2.1l-8.2 5.7c-.8.5-1.8-.1-1.8-1V5.2Z" />
+            </svg>
+          </button>
+
+          <!-- adiantar -->
+          <button class="player__btn" type="button" aria-label="Adiantar" tabindex="-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12.5 5.5 19 12l-6.5 6.5" />
+              <path d="M5.5 5.5 12 12l-6.5 6.5" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- volume decorativo -->
+        <div class="player__volume" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 9.5h3.2L12 5.6v12.8L7.2 14.5H4z" />
+          </svg>
+          <div class="player__voltrack"><div class="player__volfill"></div></div>
+          <svg viewBox="0 0 24 24">
+            <path d="M4 9.5h3.2L12 5.6v12.8L7.2 14.5H4z" />
+            <path d="M15.5 9.2a4 4 0 0 1 0 5.6" fill="none" stroke-width="1.6" />
+            <path d="M17.8 7a7 7 0 0 1 0 10" fill="none" stroke-width="1.6" />
+          </svg>
+        </div>
+
+      </div>
+
     </div>
   </section>
+
+  <audio id="bgAudio" src="music.mp3" preload="metadata" loop></audio>
 
   <script src="script.js"></script>
 </body>

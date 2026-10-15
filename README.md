@@ -7,8 +7,13 @@ A tela inicial mostra um envelope branco fechado, com selo de cera preta e um
 pingente, cercado por ornamentos minimalistas em preto e cinza.
 
 Ao tocar na carta, ela abre: a aba superior levanta, o selo de cera se solta e
-o pingente cai. Em seguida a carta desaparece e abre uma **página toda branca**
-(a seção `#whitepage`), pronta para receber o conteúdo depois.
+o pingente cai. Em seguida a carta desaparece e abre uma **página branca com um
+player estilo iPhone** — capa (foto), título, barra de progresso com tempos e
+os botões de voltar, pausar/tocar e adiantar, todos desenhados em SVG.
+
+Os botões são apenas visuais. A música começa no toque da carta e a **barra de
+progresso corre junto com o áudio em loop** — quando a música termina, ela
+reinicia do começo.
 
 ## Estrutura
 
@@ -39,19 +44,14 @@ Depois abra `http://localhost:8000` e use o modo responsivo do navegador
 
 ## Personalizar
 
-**Página branca (destino):** é a seção `#whitepage` no `index.html`. Está vazia
-de propósito — é onde vamos colocar o conteúdo depois.
+**Música e foto:** troque os arquivos `music.mp3` e `photo.jpg` na raiz do
+projeto (mantendo os mesmos nomes) e o player atualiza sozinho.
 
-**Música:** em `script.js`, preencha `GIFT.audio`:
+**Título e artista:** no `index.html`, nos elementos `#playerTitle` e
+`#playerArtist`.
 
-```js
-const GIFT = {
-  audio: "" // ex.: "musica.mp3"
-};
-```
-
-Se preencher, a música começa **depois** do toque do usuário (assim o navegador
-permite a reprodução automática). Coloque o arquivo de áudio na raiz do projeto.
+A música começa **depois** do toque do usuário (assim o navegador permite a
+reprodução automática) e fica em loop.
 
 ## Publicar no Cloudflare Pages
 

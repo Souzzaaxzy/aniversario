@@ -5,19 +5,18 @@
 (function () {
   "use strict";
 
-  /* ---------------------------------------------------------------------
-     Conteúdo do presente
-     A página branca (id "whitepage") fica vazia por enquanto, para
-     preenchermos depois. O áudio de fundo já pode ser definido aqui.
-     --------------------------------------------------------------------- */
-  const GIFT = {
-    audio: "" // ex.: "musica.mp3" — toca após o toque do usuário
-  };
-
   const stage = document.getElementById("stage");
   const letter = document.getElementById("letter");
   const decoField = document.getElementById("decoField");
   const whitepage = document.getElementById("whitepage");
+
+  /* player */
+  const audio = document.getElementById("bgAudio");
+  const player = document.querySelector(".player");
+  const playerFill = document.getElementById("playerFill");
+  const playerKnob = document.getElementById("playerKnob");
+  const playerCurrent = document.getElementById("playerCurrent");
+  const playerDuration = document.getElementById("playerDuration");
 
   const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -106,19 +105,54 @@
   }
 
   /* ---------------------------------------------------------------------
-     Abertura / fechamento da carta
+     Player: a música começa no toque da carta e a barra corre em loop.
+     Os botões são apenas visuais (não têm interação).
+     --------------------------------------------------------------------- */
+  function formatTime(sec) {
+    if (!isFinite(sec) || sec < 0) sec = 0;
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ":" + String(s).padStart(2, "0");
+  }
+
+  function updateProgress() {
+    const dur = audio.duration || 0;
+    const cur = audio.currentTime || 0;
+    const pct = dur > 0 ? (cur / dur) * 100 : 0;
+
+    playerFill.style.width = pct + "%";
+    playerKnob.style.left = pct + "%";
+    playerCurrent.textContent = formatTime(cur);
+  }
+
+  function progressLoop() {
+    updateProgress();
+    window.requestAnimationFrame(progressLoop);
+  }
+
+  function initPlayer() {
+    const setDuration = () => {
+      playerDuration.textContent = formatTime(audio.duration);
+      updateProgress();
+    };
+    if (audio.readyState >= 1) setDuration();
+    audio.addEventListener("loadedmetadata", setDuration);
+    audio.addEventListener("durationchange", setDuration);
+    // ao dar a volta (loop), a barra reinicia junto com o áudio
+    audio.addEventListener("seeked", updateProgress);
+    window.requestAnimationFrame(progressLoop);
+  }
+
+  /* ---------------------------------------------------------------------
+     Abertura da carta
      --------------------------------------------------------------------- */
   let isOpen = false;
-  let audioEl = null;
 
   function startAudio() {
-    if (!GIFT.audio) return;
-    if (!audioEl) {
-      audioEl = new Audio(GIFT.audio);
-      audioEl.loop = true;
-      audioEl.volume = 0.6;
-    }
-    audioEl.play().catch(() => {});
+    audio.volume = 0.7;
+    const p = audio.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
+    player.classList.remove("is-paused");
   }
 
   function openLetter() {
@@ -142,6 +176,7 @@
 
   function init() {
     buildDecorations();
+    initPlayer();
     letter.addEventListener("click", openLetter);
   }
 
