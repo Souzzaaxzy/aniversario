@@ -17,7 +17,6 @@
   const stage = document.getElementById("stage");
   const letter = document.getElementById("letter");
   const decoField = document.getElementById("decoField");
-  const heart = document.getElementById("heart");
   const whitepage = document.getElementById("whitepage");
 
   const SVG_NS = "http://www.w3.org/2000/svg";
@@ -122,45 +121,23 @@
     audioEl.play().catch(() => {});
   }
 
-  /* ---------------------------------------------------------------------
-     Coração desenhado ao toque: o traço vermelho "nasce" no meio, sobe
-     formando o lado esquerdo, cruza para a direita e fecha o coração.
-     O rastro roxo corre logo atrás, mais forte.
-     --------------------------------------------------------------------- */
-  const heartHeadAnim = document.getElementById("heartHeadAnim");
-
-  function drawHeart() {
-    heart.classList.remove("is-active");
-    // reinicia as animações (força o navegador a recalcular)
-    void heart.offsetWidth;
-    heart.classList.add("is-active");
-
-    // ponta de luz que percorre o desenho
-    if (heartHeadAnim) {
-      try {
-        heartHeadAnim.beginElement();
-      } catch (e) { /* navegador sem SMIL — o traço ainda é desenhado */ }
-    }
-  }
-
   function openLetter() {
     if (isOpen) return;
     isOpen = true;
 
-    drawHeart();
+    // a carta abre: a aba levanta, o selo se solta e o pingente cai
+    stage.classList.add("is-open");
     startAudio();
 
-    // 1) quando o coração termina, ele sai e a carta desaparece
+    // depois da abertura, a carta some e a página branca entra
     window.setTimeout(() => {
-      heart.classList.add("is-leaving");
       stage.classList.add("is-leaving");
-    }, 2000);
+    }, 1500);
 
-    // 2) em seguida abre a página branca
     window.setTimeout(() => {
       whitepage.classList.add("is-visible");
       whitepage.setAttribute("aria-hidden", "false");
-    }, 2750);
+    }, 2250);
   }
 
   function init() {

@@ -282,120 +282,45 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Animação de coração desenhado — filamento luminoso
-   Traço fino, cor em degradê, brilho suave e ponta de luz que percorre.
+   Abertura da carta: aba levanta, selo se solta e o pingente cai
    -------------------------------------------------------------------------- */
-.heart {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2; /* atrás da carta (que fica em z-index 3) */
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-
-  /* grande o suficiente para envolver a carta (por fora, não por dentro) */
-  width: min(94vw, 360px);
-  height: min(94vw, 360px);
+#topFlap {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.heart.is-active { opacity: 1; }
-.heart.is-leaving { opacity: 0; transition: opacity 0.5s ease; }
-
-.heart__svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
+.stage.is-open #topFlap {
+  transform: scaleY(-1);
 }
 
-.heart__aura,
-.heart__purple,
-.heart__red,
-.heart__core {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  /* traçado que se desenha (pathLength=100 no SVG) */
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  vector-effect: non-scaling-stroke;
-}
-
-/* aura roxa contida, só um halo atrás de tudo */
-.heart__aura {
-  stroke: #7d3bff;
-  stroke-width: 10;
-  opacity: 0.22;
-  filter: url(#heartGlowBig);
-}
-
-/* rastro roxo, mais forte */
-.heart__purple {
-  stroke: url(#heartPurple);
-  stroke-width: 5.5;
-  opacity: 0.85;
-  filter: url(#heartGlowSoft);
-}
-
-/* traço vermelho que desenha o coração */
-.heart__red {
-  stroke: url(#heartRed);
-  stroke-width: 3.2;
-  filter: url(#heartGlowSoft);
-}
-
-/* fio de luz sobre o traço, dá o aspecto vítreo */
-.heart__core {
-  stroke: #ffffff;
-  stroke-width: 1.1;
-  opacity: 0.9;
-}
-
-/* o vermelho lidera; o roxo corre logo atrás; o fio de luz acompanha */
-.heart.is-active .heart__aura   { animation: drawHeart 1.7s cubic-bezier(0.45,0.05,0.35,1) 0.20s forwards; }
-.heart.is-active .heart__purple { animation: drawHeart 1.7s cubic-bezier(0.45,0.05,0.35,1) 0.16s forwards; }
-.heart.is-active .heart__red    { animation: drawHeart 1.7s cubic-bezier(0.45,0.05,0.35,1) 0.02s forwards; }
-.heart.is-active .heart__core   { animation: drawHeart 1.7s cubic-bezier(0.45,0.05,0.35,1) 0.02s forwards; }
-
-/* ponta luminosa */
-.heart__head {
-  opacity: 0;
-  filter: url(#heartGlowSoft);
-}
-.heart.is-active .heart__head { opacity: 1; }
-
-@keyframes drawHeart {
-  0%   { stroke-dashoffset: 100; }
-  100% { stroke-dashoffset: 0; }
-}
-
-/* --------------------------------------------------------------------------
-   Saída da carta: depois do coração, a carta desaparece
-   -------------------------------------------------------------------------- */
 #sealGroup {
   transform-box: fill-box;
   transform-origin: 50% 50%;
-  transition: transform 0.7s cubic-bezier(0.34, 1.2, 0.5, 1), opacity 0.5s ease 0.15s;
+  transition: transform 0.8s cubic-bezier(0.34, 1.2, 0.5, 1), opacity 0.6s ease 0.25s;
 }
+.stage.is-open #sealGroup {
+  transform: translate(6px, 66px) rotate(18deg) scale(0.9);
+  opacity: 0;
+}
+
 #pendant {
   transform-box: fill-box;
   transform-origin: 50% 0%;
-  transition: transform 0.7s cubic-bezier(0.34, 1.1, 0.5, 1), opacity 0.5s ease 0.1s;
+  transition: transform 0.8s cubic-bezier(0.34, 1.1, 0.5, 1), opacity 0.6s ease 0.2s;
+}
+.stage.is-open #pendant {
+  transform: translateY(64px) rotate(-9deg);
+  opacity: 0;
 }
 
+/* --------------------------------------------------------------------------
+   Saída da tela inicial: carta some e a página branca entra
+   -------------------------------------------------------------------------- */
 .stage.is-leaving .letter {
   animation: none;
   opacity: 0;
   transform: translateY(10px) scale(0.97);
   transition: opacity 0.75s ease, transform 0.75s ease;
-}
-.stage.is-leaving #sealGroup {
-  transform: translate(4px, 40px) rotate(14deg) scale(0.9);
-  opacity: 0;
-}
-.stage.is-leaving #pendant {
-  transform: translateY(40px) rotate(-8deg);
-  opacity: 0;
 }
 /* esconde o restante da tela inicial enquanto a página branca entra */
 .stage.is-leaving .hint,

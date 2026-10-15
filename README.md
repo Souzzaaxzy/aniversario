@@ -6,11 +6,8 @@ primeiro para smartphones (proporção 9:16).
 A tela inicial mostra um envelope branco fechado, com selo de cera preta e um
 pingente, cercado por ornamentos minimalistas em preto e cinza.
 
-Ao tocar na carta, um coração é desenhado **por fora, envolvendo a carta**: o
-traço vermelho "nasce" no meio, sobe formando o lado esquerdo, cruza para a
-direita e fecha o coração — com um rastro roxo mais forte logo atrás.
-
-Quando o coração termina, a carta desaparece e abre uma **página toda branca**
+Ao tocar na carta, ela abre: a aba superior levanta, o selo de cera se solta e
+o pingente cai. Em seguida a carta desaparece e abre uma **página toda branca**
 (a seção `#whitepage`), pronta para receber o conteúdo depois.
 
 ## Estrutura
