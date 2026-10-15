@@ -454,6 +454,174 @@ body {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(-26deg); }
 }
+/* --------------------------------------------------------------------------
+   Derreter o nome "Gigica" + gotas + carta desenhada (compatibilidade)
+   -------------------------------------------------------------------------- */
+.meltwrap { position: relative; width: 100%; display: flex; justify-content: center; }
+.names__name--melt { position: relative; }
+.names__name--melt::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: inherit;
+  filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+}
+.panel--names.is-melting .names__name--melt::after {
+  animation: meltBlur 3.2s ease-in forwards;
+}
+@keyframes meltBlur {
+  0%   { opacity: 0; transform: translateY(0) scaleY(1); }
+  35%  { opacity: 0.9; transform: translateY(4px) scaleY(1.06); }
+  100% { opacity: 0; transform: translateY(26px) scaleY(1.35); }
+}
+
+/* gotas caindo do nome */
+.drips {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: min(78vw, 320px);
+  height: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+.drip {
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 16px;
+  border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  background: linear-gradient(180deg, #2f6bff, #1f57e0);
+  opacity: 0;
+  box-shadow: 0 2px 6px rgba(31, 87, 224, 0.4);
+}
+.drip::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  top: 18%;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+}
+/* posições e tempos escalonados de cada gota */
+.drip:nth-child(1)  { left: 6%;  }
+.drip:nth-child(2)  { left: 16%; }
+.drip:nth-child(3)  { left: 27%; }
+.drip:nth-child(4)  { left: 38%; }
+.drip:nth-child(5)  { left: 48%; }
+.drip:nth-child(6)  { left: 56%; }
+.drip:nth-child(7)  { left: 64%; }
+.drip:nth-child(8)  { left: 73%; }
+.drip:nth-child(9)  { left: 82%; }
+.drip:nth-child(10) { left: 90%; }
+.drip:nth-child(11) { left: 33%; }
+.drip:nth-child(12) { left: 69%; }
+.panel--names.is-melting .drip { animation: dripFall 1.5s cubic-bezier(0.5, 0.1, 0.9, 0.4) forwards; }
+.drip:nth-child(1)  { animation-delay: 0.05s; }
+.drip:nth-child(2)  { animation-delay: 0.30s; }
+.drip:nth-child(3)  { animation-delay: 0.15s; }
+.drip:nth-child(4)  { animation-delay: 0.45s; }
+.drip:nth-child(5)  { animation-delay: 0.10s; }
+.drip:nth-child(6)  { animation-delay: 0.38s; }
+.drip:nth-child(7)  { animation-delay: 0.22s; }
+.drip:nth-child(8)  { animation-delay: 0.52s; }
+.drip:nth-child(9)  { animation-delay: 0.28s; }
+.drip:nth-child(10) { animation-delay: 0.42s; }
+.drip:nth-child(11) { animation-delay: 0.58s; }
+.drip:nth-child(12) { animation-delay: 0.66s; }
+@keyframes dripFall {
+  0%   { opacity: 0; transform: translateY(-6px) scaleY(0.6); }
+  12%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(clamp(160px, 34vh, 320px)) scaleY(1.5); }
+}
+
+/* carta desenhada que se forma a partir das gotas (terceira tela) */
+.panel--result.is-dripped .result {
+  animation: cardForm 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.result {
+  width: 100%;
+  max-width: 330px;
+  padding: clamp(20px, 5.4vw, 28px);
+  border-radius: 24px;
+  background: #17181c;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+  text-align: left;
+  transform-origin: 50% 0%;
+  transform: scaleY(0.04);
+  opacity: 0;
+}
+@keyframes cardForm {
+  0%   { opacity: 0; transform: scaleY(0.04); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+
+.result__title {
+  margin: 0 0 clamp(18px, 3.4vh, 26px);
+  text-align: center;
+  font-size: clamp(15px, 4.6vw, 19px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+.result__row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(14px, 2.6vh, 20px);
+}
+.result__avatar {
+  width: clamp(46px, 13vw, 58px);
+  height: clamp(46px, 13vw, 58px);
+  border-radius: 50%;
+  flex: 0 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+/* "@minhagotica" — avatar roxo com brilho */
+.result__avatar--a {
+  background:
+    radial-gradient(circle at 65% 30%, #ffd0ea 0 22%, transparent 23%),
+    radial-gradient(circle at 40% 75%, #c99bff 0 40%, transparent 41%),
+    linear-gradient(150deg, #6d3bd6, #2a124f);
+}
+/* "Kannon" — avatar escuro com olhos vermelhos */
+.result__avatar--b {
+  background:
+    radial-gradient(circle at 34% 46%, #ff3b47 0 9%, transparent 10%),
+    radial-gradient(circle at 66% 46%, #ff3b47 0 9%, transparent 10%),
+    linear-gradient(150deg, #2b2b30, #0d0d10);
+}
+.result__text { min-width: 0; }
+.result__name {
+  margin: 0;
+  font-size: clamp(16px, 4.8vw, 20px);
+  font-weight: 700;
+  color: #ffffff;
+}
+.result__sub {
+  margin: 3px 0 0;
+  font-size: clamp(13px, 3.6vw, 15px);
+  color: #9aa0a6;
+}
+.result__pct {
+  margin: clamp(20px, 3.6vh, 30px) 0 0;
+  text-align: center;
+  font-size: clamp(15px, 4.4vw, 18px);
+  font-weight: 600;
+  color: #ffffff;
+}
+.result__num {
+  color: #ff3b47;
+  font-weight: 800;
+}
+
 .names__ornament {
   display: flex;
   align-items: center;
@@ -745,5 +913,6 @@ body {
   * { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
   .letter, .hint, .divider, .ornament { opacity: 1; }
   .couple__char, .char__arm, .walker, .walker__hop, .narm,
-  .stage__bigheart, .stage__ring, .spark { animation: none; }
+  .stage__bigheart, .stage__ring, .spark, .drip { animation: none; }
+  .names__name--melt::after { display: none; }
 }

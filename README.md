@@ -36,6 +36,12 @@ Quando a segunda tela aparece, começa uma pequena cena:
 5. Logo depois, **um coração grande sobe atrás deles**, cobrindo o casal, e
    eles ficam parados abraçados dentro do coração.
 
+Passada essa cena, o nome **Gigica começa a derreter**, pingando **gotas azuis**.
+As gotas caem e a tela rola para uma terceira parte, onde **se forma uma carta
+desenhada** (no estilo de um resultado de app de compatibilidade) com
+"COMPATIBILIDADE", "@minhagotica / cute cute", "Kannon" e "100% de
+compatibilidade". A carta é 100% desenhada em CSS/SVG — não é uma imagem.
+
 ## Estrutura
 
 ```

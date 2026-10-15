@@ -11,6 +11,7 @@
   const whitepage = document.getElementById("whitepage");
   const whitepageInner = document.getElementById("whitepageInner");
   const namesPanel = document.getElementById("namesPanel");
+  const resultPanel = document.getElementById("resultPanel");
 
   /* player */
   const audio = document.getElementById("bgAudio");
@@ -161,6 +162,25 @@
     namesPanel.classList.remove("is-reveal");
     void namesPanel.offsetWidth; /* reinicia as animações */
     namesPanel.classList.add("is-reveal");
+
+    /* depois do abraço + coração grande, as gotas caem e a carta derrete */
+    window.setTimeout(startDrip, 9600);
+  }
+
+  /* "chove" gotas do nome e rola para a carta desenhada que se forma */
+  function startDrip() {
+    if (!namesPanel || namesPanel.classList.contains("is-melting")) return;
+    namesPanel.classList.add("is-melting");
+    /* enquanto as gotas caem, desce até a terceira tela */
+    window.setTimeout(() => {
+      if (whitepageInner && resultPanel) {
+        whitepageInner.scrollTo({ top: resultPanel.offsetTop, behavior: "smooth" });
+      }
+    }, 500);
+    /* a carta desenhada se forma */
+    window.setTimeout(() => {
+      if (resultPanel) resultPanel.classList.add("is-dripped");
+    }, 950);
   }
 
   /* rola automaticamente para a próxima parte (os nomes) */
