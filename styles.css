@@ -54,8 +54,9 @@ body {
   overflow: hidden;
   isolation: isolate;
 
-  /* fundo branco com textura sutil de papel + luz difusa */
+  /* fundo branco com textura sutil de papel + luz difusa + prestígios */
   background:
+    url("prestigio.svg") left top / 300px 300px repeat,
     radial-gradient(125% 85% at 50% 32%, #ffffff 0%, #fdfdfc 58%, #f7f7f5 100%);
 }
 
@@ -260,7 +261,9 @@ body {
   inset: 0;
   z-index: 60;
   overflow: hidden;
-  background: linear-gradient(180deg, #f4f4f5 0%, #e7e7e9 100%);
+  background:
+    url("prestigio.svg") left top / 300px 300px repeat,
+    linear-gradient(180deg, #f4f4f5 0%, #e7e7e9 100%);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

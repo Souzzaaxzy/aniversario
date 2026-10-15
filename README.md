@@ -42,6 +42,10 @@ desenhada** (no estilo de um resultado de app de compatibilidade) com
 "COMPATIBILIDADE", "@minhagotica / cute cute", "Kannon" e "100% de
 compatibilidade". A carta é 100% desenhada em CSS/SVG — não é uma imagem.
 
+De fundo, o site tem um padrão discreto de **Prestígio** (metade embalagem azul,
+metade chocolate com a ponta mordida mostrando o coco), desenhado em SVG
+(`prestigio.svg`) e repetido suavemente pelo fundo.
+
 ## Estrutura
 
 ```

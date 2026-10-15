@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+  <defs>
+    <linearGradient id="choc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6f421f"/>
+      <stop offset="0.45" stop-color="#472509"/>
+      <stop offset="1" stop-color="#261206"/>
+    </linearGradient>
+    <linearGradient id="wrap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4f8bf0"/>
+      <stop offset="0.5" stop-color="#234ec2"/>
+      <stop offset="1" stop-color="#14308c"/>
+    </linearGradient>
+    <linearGradient id="coco" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf3e2"/>
+      <stop offset="1" stop-color="#e4cfa6"/>
+    </linearGradient>
+    <clipPath id="bar"><rect x="2" y="4" width="116" height="32" rx="8"/></clipPath>
+
+    <g id="prest">
+      <g clip-path="url(#bar)">
+        <rect x="2" y="4" width="116" height="32" fill="url(#choc)"/>
+        <g stroke="#000" stroke-opacity="0.16" stroke-width="1">
+          <line x1="64" y1="6" x2="64" y2="34"/>
+          <line x1="76" y1="6" x2="76" y2="34"/>
+        </g>
+        <path d="M92 4 L118 4 L118 36 L92 36 Q104 33 103 24 Q102 16 92 4 Z" fill="url(#coco)"/>
+        <path d="M90 4 Q101 9 94 16 Q88 20 94 26 Q100 32 90 36 L86 36 L86 4 Z" fill="url(#choc)"/>
+        <g fill="#d6c096">
+          <circle cx="102" cy="12" r="1.3"/><circle cx="107" cy="19" r="1.4"/>
+          <circle cx="100" cy="25" r="1.1"/><circle cx="109" cy="28" r="1.2"/><circle cx="104" cy="31" r="1.1"/>
+        </g>
+        <rect x="2" y="4" width="116" height="4" fill="#000" opacity="0.10"/>
+      </g>
+      <path d="M2 12 Q2 4 10 4 H68 V36 H10 Q2 36 2 28 Z" fill="url(#wrap)"/>
+      <rect x="2" y="4" width="66" height="32" rx="8" fill="none" stroke="#0e2570" stroke-width="1.1" opacity="0.5"/>
+      <rect x="6" y="14" width="58" height="10" rx="5" fill="#ffffff"/>
+      <ellipse cx="35" cy="19" rx="20" ry="3.6" fill="#17368f"/>
+      <text x="35" y="21.6" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="6.6" font-weight="bold" fill="#ffffff">PRESTIGIO</text>
+      <rect x="7" y="8" width="54" height="2.6" rx="1.3" fill="#ffffff" opacity="0.32"/>
+    </g>
+  </defs>
+
+  <!-- poucos prestígios, bem espaçados e discretos -->
+  <g opacity="0.2">
+    <use href="#prest" transform="translate(20,24) rotate(-14 60 20)"/>
+    <use href="#prest" transform="translate(238,150) rotate(16 60 20)"/>
+    <use href="#prest" transform="translate(96,300) rotate(-6 60 20)"/>
+    <use href="#prest" transform="translate(300,352) rotate(10 60 20)"/>
+  </g>
+</svg>
