@@ -359,6 +359,7 @@ body {
   width: clamp(104px, 33vw, 150px);
   height: auto;
   display: block;
+  transform-origin: 50% 100%;
 }
 /* o menino é um pouco mais alto que a menina */
 .couple__char--boy {
@@ -366,6 +367,44 @@ body {
   margin-right: -16px;
 }
 .couple__char--girl { margin-left: -16px; }
+
+/* respiração: o corpo sobe de leve e os braços acompanham */
+.couple__char {
+  animation: breathe 4.4s ease-in-out infinite;
+}
+.couple__char--girl {
+  animation-duration: 5s;
+  animation-delay: 0.9s;
+}
+@keyframes breathe {
+  0%, 100% { transform: scaleY(1) translateY(0); }
+  50%      { transform: scaleY(1.022) translateY(-2px); }
+}
+
+.char__arm {
+  transform-box: fill-box;
+}
+/* braço esquerdo: sobe ao respirar */
+.char__arm--l {
+  transform-origin: 60% 6%;
+  animation: armBreatheL 4.4s ease-in-out infinite;
+}
+/* braço direito: sobe ao respirar */
+.char__arm--r {
+  transform-origin: 40% 6%;
+  animation: armBreatheR 4.4s ease-in-out infinite;
+}
+.couple__char--girl .char__arm--l { animation-duration: 5s; animation-delay: 0.9s; }
+.couple__char--girl .char__arm--r { animation-duration: 5s; animation-delay: 0.9s; }
+
+@keyframes armBreatheL {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  50%      { transform: rotate(-4.5deg) translateY(-3px); }
+}
+@keyframes armBreatheR {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  50%      { transform: rotate(4.5deg) translateY(-3px); }
+}
 
 /* --------------------------------------------------------------------------
    Widget
@@ -576,4 +615,5 @@ body {
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
   .letter, .hint, .divider, .ornament { opacity: 1; }
+  .couple__char, .char__arm, .names__heart { animation: none; }
 }
