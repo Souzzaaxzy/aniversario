@@ -155,10 +155,30 @@
     player.classList.remove("is-paused");
   }
 
+  /* dispara a cena dos personagens (entrar + abraçar o coração) */
+  function playNamesReveal() {
+    if (!namesPanel) return;
+    namesPanel.classList.remove("is-reveal");
+    void namesPanel.offsetWidth; /* reinicia as animações */
+    namesPanel.classList.add("is-reveal");
+  }
+
   /* rola automaticamente para a próxima parte (os nomes) */
   function scrollToNames() {
     if (!whitepageInner || !namesPanel) return;
     whitepageInner.scrollTo({ top: namesPanel.offsetTop, behavior: "smooth" });
+    /* quando a rolagem terminar, os personagens entram */
+    window.setTimeout(playNamesReveal, 700);
+  }
+
+  /* se o usuário rolar manualmente até os nomes, a cena também acontece */
+  function initNamesReveal() {
+    if (!namesPanel || !whitepageInner) return;
+    whitepageInner.addEventListener("scroll", () => {
+      if (whitepageInner.scrollTop > namesPanel.offsetTop * 0.6) {
+        if (!namesPanel.classList.contains("is-reveal")) playNamesReveal();
+      }
+    });
   }
 
   function openLetter() {
@@ -186,6 +206,7 @@
   function init() {
     buildDecorations();
     initPlayer();
+    initNamesReveal();
     letter.addEventListener("click", openLetter);
   }
 

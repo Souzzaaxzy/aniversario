@@ -392,27 +392,110 @@
       </div>
       </div>
 
-      <!-- segunda tela: os nomes -->
+      <!-- segunda tela: os nomes + cena dos personagens -->
       <div class="panel panel--names" id="namesPanel">
         <div class="names">
           <p class="names__name">Leo</p>
-          <svg class="names__heart" viewBox="0 0 120 108" aria-hidden="true">
-            <defs>
-              <linearGradient id="nameHeart" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#ff5f6d" />
-                <stop offset="0.5" stop-color="#e0245e" />
-                <stop offset="1" stop-color="#b0114a" />
-              </linearGradient>
-              <radialGradient id="nameHeartGlow" cx="0.5" cy="0.4" r="0.6">
-                <stop offset="0" stop-color="#ff8aa0" stop-opacity="0.75" />
-                <stop offset="1" stop-color="#ff8aa0" stop-opacity="0" />
-              </radialGradient>
-            </defs>
-            <ellipse cx="60" cy="54" rx="58" ry="52" fill="url(#nameHeartGlow)" />
-            <path d="M60 104 C18 76 6 52 6 34 C6 17 19 6 34 6 C45 6 54 12 60 22 C66 12 75 6 86 6 C101 6 114 17 114 34 C114 52 102 76 60 104 Z"
-              fill="url(#nameHeart)" />
-            <path d="M42 22 C33 22 27 29 27 38" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity="0.6" />
-          </svg>
+
+          <div class="names__stage" id="namesStage">
+            <svg class="names__heart" viewBox="0 0 120 108" aria-hidden="true">
+              <defs>
+                <linearGradient id="nameHeart" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ff5f6d" />
+                  <stop offset="0.5" stop-color="#e0245e" />
+                  <stop offset="1" stop-color="#b0114a" />
+                </linearGradient>
+                <radialGradient id="nameHeartGlow" cx="0.5" cy="0.4" r="0.6">
+                  <stop offset="0" stop-color="#ff8aa0" stop-opacity="0.75" />
+                  <stop offset="1" stop-color="#ff8aa0" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <ellipse cx="60" cy="54" rx="58" ry="52" fill="url(#nameHeartGlow)" />
+              <path class="names__heartShape"
+                d="M60 104 C18 76 6 52 6 34 C6 17 19 6 34 6 C45 6 54 12 60 22 C66 12 75 6 86 6 C101 6 114 17 114 34 C114 52 102 76 60 104 Z"
+                fill="url(#nameHeart)" />
+              <path d="M42 22 C33 22 27 29 27 38" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity="0.6" />
+            </svg>
+
+            <!-- menino vem da esquerda -->
+            <div class="walker walker--boy" aria-hidden="true">
+              <div class="walker__hop">
+                <svg class="walker__char" viewBox="0 0 160 200">
+                  <defs>
+                    <linearGradient id="boyShirtN" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#3a3a42" /><stop offset="1" stop-color="#131316" />
+                    </linearGradient>
+                    <linearGradient id="boySkinN" x1="0.3" y1="0" x2="0.8" y2="1">
+                      <stop offset="0" stop-color="#f8d8b6" /><stop offset="1" stop-color="#eec19a" />
+                    </linearGradient>
+                    <linearGradient id="boyHairN" x1="0" y1="0" x2="0.2" y2="1">
+                      <stop offset="0" stop-color="#8d8d97" /><stop offset="0.45" stop-color="#5c5c66" /><stop offset="1" stop-color="#2a2a30" />
+                    </linearGradient>
+                    <radialGradient id="boyCheekN" cx="0.5" cy="0.5" r="0.5">
+                      <stop offset="0" stop-color="#f28a97" stop-opacity="0.55" /><stop offset="1" stop-color="#f28a97" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <path d="M46 200 C46 156 57 134 80 134 C103 134 114 156 114 200 Z" fill="url(#boyShirtN)" />
+                  <g class="narm narm--l"><path d="M56 150 C40 162 37 182 42 200" fill="none" stroke="url(#boySkinN)" stroke-width="13" stroke-linecap="round" /></g>
+                  <g class="narm narm--r"><path d="M104 150 C120 162 123 182 118 200" fill="none" stroke="url(#boySkinN)" stroke-width="13" stroke-linecap="round" /></g>
+                  <rect x="72" y="118" width="16" height="22" rx="8" fill="#e7bd91" />
+                  <circle cx="80" cy="72" r="54" fill="url(#boySkinN)" />
+                  <path d="M40 92 Q80 128 120 92 Q80 112 40 92 Z" fill="#e2b183" opacity="0.35" />
+                  <path d="M26 58 A54 54 0 0 1 134 58 Q120 72 80 72 Q40 72 26 58 Z" fill="url(#boyHairN)" />
+                  <g fill="url(#boyHairN)">
+                    <circle cx="38" cy="56" r="14" /><circle cx="58" cy="44" r="15" />
+                    <circle cx="80" cy="40" r="15" /><circle cx="102" cy="44" r="15" /><circle cx="122" cy="56" r="14" />
+                  </g>
+                  <g fill="none" stroke="#9a9aa6" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
+                    <path d="M30 46 q6 -6 12 0 q6 6 12 0" /><path d="M62 36 q6 -6 12 0 q6 6 12 0" /><path d="M94 42 q6 -6 12 0 q6 6 12 0" />
+                  </g>
+                  <ellipse cx="94" cy="88" rx="9" ry="12.5" fill="#2b2b30" />
+                  <ellipse cx="118" cy="88" rx="9" ry="12.5" fill="#2b2b30" />
+                  <circle cx="97" cy="83" r="3.6" fill="#ffffff" /><circle cx="121" cy="83" r="3.6" fill="#ffffff" />
+                  <ellipse cx="86" cy="103" rx="9" ry="5.5" fill="url(#boyCheekN)" />
+                  <ellipse cx="128" cy="103" rx="9" ry="5.5" fill="url(#boyCheekN)" />
+                  <path d="M100 105 q6 6 12 0" fill="none" stroke="#c07b62" stroke-width="2.6" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- menina vem da direita -->
+            <div class="walker walker--girl" aria-hidden="true">
+              <div class="walker__hop">
+                <svg class="walker__char" viewBox="0 0 160 200">
+                  <defs>
+                    <linearGradient id="girlDressN" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#b487dd" /><stop offset="1" stop-color="#8a55bd" />
+                    </linearGradient>
+                    <linearGradient id="girlSkinN" x1="0.3" y1="0" x2="0.8" y2="1">
+                      <stop offset="0" stop-color="#f8d8b6" /><stop offset="1" stop-color="#eec19a" />
+                    </linearGradient>
+                    <linearGradient id="girlHairN" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#4a342a" /><stop offset="1" stop-color="#2f1f18" />
+                    </linearGradient>
+                    <radialGradient id="girlCheekN" cx="0.5" cy="0.5" r="0.5">
+                      <stop offset="0" stop-color="#f28a97" stop-opacity="0.55" /><stop offset="1" stop-color="#f28a97" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <path d="M24 72 A56 56 0 0 1 136 72 L136 152 Q80 172 24 152 Z" fill="url(#girlHairN)" />
+                  <path d="M80 134 C62 134 53 160 48 200 L112 200 C107 160 98 134 80 134 Z" fill="url(#girlDressN)" />
+                  <g class="narm narm--l"><path d="M56 150 C40 162 37 182 42 200" fill="none" stroke="url(#girlSkinN)" stroke-width="13" stroke-linecap="round" /></g>
+                  <g class="narm narm--r"><path d="M104 150 C120 162 123 182 118 200" fill="none" stroke="url(#girlSkinN)" stroke-width="13" stroke-linecap="round" /></g>
+                  <rect x="72" y="118" width="16" height="22" rx="8" fill="#e7bd91" />
+                  <circle cx="80" cy="72" r="54" fill="url(#girlSkinN)" />
+                  <path d="M40 92 Q80 128 120 92 Q80 112 40 92 Z" fill="#e2b183" opacity="0.35" />
+                  <path d="M28 60 A54 54 0 0 1 132 60 Q120 74 80 74 Q40 74 28 60 Z" fill="url(#girlHairN)" />
+                  <ellipse cx="66" cy="88" rx="9" ry="12.5" fill="#33241d" />
+                  <ellipse cx="42" cy="88" rx="9" ry="12.5" fill="#33241d" />
+                  <circle cx="63" cy="83" r="3.6" fill="#ffffff" /><circle cx="39" cy="83" r="3.6" fill="#ffffff" />
+                  <ellipse cx="74" cy="103" rx="9" ry="5.5" fill="url(#girlCheekN)" />
+                  <ellipse cx="32" cy="103" rx="9" ry="5.5" fill="url(#girlCheekN)" />
+                  <path d="M48 105 q6 6 12 0" fill="none" stroke="#c07b62" stroke-width="2.6" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
           <p class="names__name">Gigica</p>
         </div>
         <div class="names__ornament" aria-hidden="true">

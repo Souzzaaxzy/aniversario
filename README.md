@@ -26,6 +26,10 @@ para a segunda parte: uma tela sóbria com os dois nomes grandes (**Leo** e
 **Gigica**) separados por um coração. A rolagem usa *scroll snap*, então dá pra
 voltar e avançar arrastando também.
 
+Quando a segunda tela aparece, os **dois personagens entram em cena**: o menino
+surge da borda esquerda e a menina da direita, vêm **pulando** até o centro e
+**abraçam o coração**. Eles continuam pulando suavemente ali, abraçados.
+
 ## Estrutura
 
 ```
