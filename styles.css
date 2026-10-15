@@ -264,6 +264,7 @@ body {
   justify-content: center;
   padding: 32px 26px;
   background: #ffffff;
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -284,13 +285,20 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Player estilo iPhone
+   Player estilo iPhone — painel preto
    -------------------------------------------------------------------------- */
 .player {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: clamp(20px, 5vw, 30px);
+  border-radius: 34px;
+  background: #0b0b0c;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 26px 60px rgba(0,0,0,0.28),
+    0 6px 18px rgba(0,0,0,0.18);
 }
 
 .player__art {
@@ -298,11 +306,8 @@ body {
   aspect-ratio: 1 / 1;
   border-radius: 20px;
   overflow: hidden;
-  background: #f0f0ee;
-  box-shadow:
-    0 1px 0 rgba(0,0,0,0.04),
-    0 18px 40px rgba(60,60,58,0.16),
-    0 4px 12px rgba(60,60,58,0.08);
+  background: #1a1a1c;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.5);
 }
 .player__cover {
   width: 100%;
@@ -313,7 +318,7 @@ body {
 
 .player__meta {
   width: 100%;
-  margin-top: clamp(22px, 4vh, 34px);
+  margin-top: clamp(20px, 3.6vh, 30px);
   text-align: left;
 }
 .player__title {
@@ -321,19 +326,19 @@ body {
   font-size: clamp(19px, 5vw, 23px);
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: #111;
+  color: #f5f5f3;
 }
 .player__artist {
   margin: 3px 0 0;
   font-size: clamp(14px, 3.8vw, 16px);
   font-weight: 400;
-  color: #8a8a86;
+  color: #8f8f93;
 }
 
 /* barra de progresso */
 .player__progress {
   width: 100%;
-  margin-top: clamp(18px, 3.4vh, 28px);
+  margin-top: clamp(16px, 3vh, 24px);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -341,7 +346,7 @@ body {
 .player__time {
   font-size: 12px;
   font-variant-numeric: tabular-nums;
-  color: #9a9a95;
+  color: #7c7c81;
   min-width: 34px;
 }
 .player__time:last-child { text-align: right; }
@@ -351,7 +356,7 @@ body {
   flex: 1;
   height: 5px;
   border-radius: 3px;
-  background: #e4e4e0;
+  background: #2c2c30;
   overflow: visible;
 }
 .player__fill {
@@ -359,7 +364,7 @@ body {
   inset: 0 auto 0 0;
   width: 0%;
   border-radius: 3px;
-  background: #1c1c1c;
+  background: #f2f2f0;
   transition: width 0.12s linear;
 }
 .player__knob {
@@ -369,7 +374,7 @@ body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #1c1c1c;
+  background: #f2f2f0;
   transform: translate(-50%, -50%);
   transition: left 0.12s linear;
   opacity: 0;
@@ -378,7 +383,7 @@ body {
 /* controles */
 .player__controls {
   width: 100%;
-  margin-top: clamp(22px, 4vh, 34px);
+  margin-top: clamp(20px, 3.6vh, 30px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -388,7 +393,7 @@ body {
   padding: 0;
   border: 0;
   background: none;
-  color: #1c1c1c;
+  color: #ededeb;
   line-height: 0;
   cursor: default;
   pointer-events: none;
@@ -403,7 +408,7 @@ body {
   stroke-linejoin: round;
 }
 .player__btn--play {
-  color: #111;
+  color: #ffffff;
 }
 .player__btn--play svg {
   width: 40px;
@@ -418,11 +423,11 @@ body {
 /* volume decorativo */
 .player__volume {
   width: 100%;
-  margin-top: clamp(20px, 3.6vh, 30px);
+  margin-top: clamp(18px, 3.2vh, 26px);
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #b4b4af;
+  color: #6a6a6f;
 }
 .player__volume svg {
   width: 16px;
@@ -435,14 +440,14 @@ body {
   flex: 1;
   height: 4px;
   border-radius: 2px;
-  background: #e8e8e4;
+  background: #2c2c30;
 }
 .player__volfill {
   position: absolute;
   inset: 0 auto 0 0;
   width: 62%;
   border-radius: 2px;
-  background: #c9c9c4;
+  background: #54545a;
 }
 
 /* --------------------------------------------------------------------------
