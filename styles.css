@@ -252,25 +252,19 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Tela "tocando agora" (Spotify no iPhone) — fundo escuro
-   A cor do gradiente é puxada da capa pelo JS (--tint / --tint-dark).
+   Tela "tocando agora" no estilo do widget do Centro de Controle do iOS
+   Fundo claro, com um cartão escuro arredondado flutuando.
    -------------------------------------------------------------------------- */
 .whitepage {
-  --tint: #5a4a44;
-  --tint-dark: #1a1512;
   position: fixed;
   inset: 0;
   z-index: 60;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
-  background:
-    linear-gradient(180deg,
-      var(--tint) 0%,
-      color-mix(in srgb, var(--tint) 55%, var(--tint-dark)) 34%,
-      var(--tint-dark) 76%,
-      #0a0a0a 100%);
+  padding: 24px;
+  background: linear-gradient(180deg, #f4f4f5 0%, #e7e7e9 100%);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -284,88 +278,32 @@ body {
 }
 .whitepage__inner {
   width: 100%;
-  max-width: 480px;
+  max-width: 360px;
   display: flex;
 }
 
 /* --------------------------------------------------------------------------
-   Player
+   Widget
    -------------------------------------------------------------------------- */
 .player {
   width: 100%;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
-  padding: calc(env(safe-area-inset-top, 0px) + clamp(14px, 3vh, 26px))
-           clamp(22px, 6.4vw, 34px)
-           calc(env(safe-area-inset-bottom, 0px) + clamp(16px, 3vh, 28px));
+  padding: clamp(16px, 4.4vw, 20px);
+  border-radius: 26px;
+  background: #1c1c1e;
   color: #fff;
+  box-shadow: 0 18px 44px rgba(0,0,0,0.28);
 }
 
-/* cabeçalho */
-.player__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  flex: 0 0 auto;
-}
-.player__context {
-  text-align: center;
-  line-height: 1.25;
-  min-width: 0;
-}
-.player__context-label {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: lowercase;
-  color: rgba(255,255,255,0.62);
-}
-.player__context-name {
-  display: block;
-  font-size: 13px;
-  font-weight: 500;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 46vw;
-}
-
-.player__icon-btn {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: rgba(255,255,255,0.82);
-  line-height: 0;
-  cursor: default;
-  pointer-events: none;
-  flex: 0 0 auto;
-}
-.player__icon-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-  stroke: currentColor;
-  stroke-width: 1.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.player__icon-btn svg path[d="M6 9.5 12 15l6-5.5"] { fill: none; }
-.player__bottom-icon path { fill: none; }
-.player__bottom svg path[d="M6 18 12 8.5 15 5.5 18 14"] { stroke: currentColor; }
-
-/* capa — quadrada, mas limitada pela altura para tudo caber na tela */
+/* capa */
 .player__art {
-  width: min(100%, 42vh);
+  width: min(100%, 46vh);
   aspect-ratio: 1 / 1;
   align-self: center;
-  margin: clamp(14px, 3vh, 32px) 0 0;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  background: rgba(0,0,0,0.35);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  background: #2a2a2c;
   flex: 0 0 auto;
 }
 .player__cover {
@@ -375,21 +313,16 @@ body {
   display: block;
 }
 
-/* título + artista + coração */
+/* título + artista */
 .player__meta {
   width: 100%;
-  margin-top: clamp(20px, 3.6vh, 34px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  margin-top: 18px;
   flex: 0 0 auto;
 }
-.player__meta-text { min-width: 0; }
 .player__title {
   margin: 0;
-  font-size: clamp(21px, 5.6vw, 25px);
-  font-weight: 700;
+  font-size: clamp(18px, 5vw, 21px);
+  font-weight: 600;
   letter-spacing: -0.01em;
   color: #fff;
   white-space: nowrap;
@@ -397,20 +330,16 @@ body {
   text-overflow: ellipsis;
 }
 .player__artist {
-  margin: 5px 0 0;
-  font-size: clamp(14px, 3.9vw, 16px);
+  margin: 4px 0 0;
+  font-size: clamp(14px, 3.8vw, 15px);
   font-weight: 400;
-  color: rgba(255,255,255,0.66);
+  color: rgba(255,255,255,0.58);
 }
-.player__like {
-  color: #1ed760;
-}
-.player__like svg { fill: currentColor; stroke: none; }
 
 /* barra de progresso */
 .player__progress {
   width: 100%;
-  margin-top: clamp(20px, 3.6vh, 32px);
+  margin-top: 18px;
   flex: 0 0 auto;
 }
 .player__track {
@@ -418,8 +347,7 @@ body {
   width: 100%;
   height: 4px;
   border-radius: 2px;
-  background: rgba(255,255,255,0.24);
-  overflow: visible;
+  background: rgba(255,255,255,0.22);
 }
 .player__fill {
   position: absolute;
@@ -429,88 +357,48 @@ body {
   background: #fff;
   transition: width 0.12s linear;
 }
-.player__knob {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #fff;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
-  transition: left 0.12s linear;
-}
 .player__times {
   display: flex;
   justify-content: space-between;
-  margin-top: 8px;
+  margin-top: 7px;
 }
 .player__time {
-  font-size: 12px;
+  font-size: 11px;
   font-variant-numeric: tabular-nums;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.5);
 }
 
 /* controles */
 .player__controls {
   width: 100%;
-  margin-top: clamp(18px, 3.4vh, 28px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex: 0 0 auto;
-}
-.player__icon-btn--nav svg {
-  width: 34px;
-  height: 34px;
-}
-.player__play {
-  width: 62px;
-  height: 62px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: #fff;
-  color: #000;
+  margin-top: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 44px;
+  flex: 0 0 auto;
+}
+.player__nav,
+.player__toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
   line-height: 0;
   cursor: default;
   pointer-events: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
-.player__play .player__icon {
+.player__nav svg {
   width: 30px;
   height: 30px;
-  fill: currentColor;
-  stroke: none;
+}
+.player__toggle svg {
+  width: 38px;
+  height: 38px;
 }
 .player__icon--play { display: none; }
 .player.is-paused .player__icon--pause { display: none; }
 .player.is-paused .player__icon--play { display: block; }
-
-/* linha inferior */
-.player__bottom {
-  width: 100%;
-  margin-top: auto;
-  padding-top: clamp(20px, 4vh, 40px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: rgba(255,255,255,0.55);
-  flex: 0 0 auto;
-}
-.player__bottom-icon {
-  width: 22px;
-  height: 22px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 
 /* --------------------------------------------------------------------------
    Abertura da carta: aba levanta, selo se solta e o pingente cai

@@ -7,11 +7,10 @@ A tela inicial mostra um envelope branco fechado, com selo de cera preta e um
 pingente, cercado por ornamentos minimalistas em preto e cinza.
 
 Ao tocar na carta, ela abre: a aba superior levanta, o selo de cera se solta e
-o pingente cai. Em seguida abre a tela **"tocando agora" estilo Spotify**:
-fundo escuro com um **gradiente puxado da cor da capa**, chevron no topo, capa
-grande (a foto), título e artista com o coração verde, barra de progresso com
-tempos e os controles (aleatório, anterior, play circular branco, próxima,
-repetir) e a linha inferior — tudo desenhado em SVG.
+o pingente cai. Em seguida abre uma tela clara com um **cartão escuro arredondado
+no estilo do widget "tocando agora" do Centro de Controle do iOS**: capa (a foto),
+título e artista, barra de progresso com tempos e os controles de anterior,
+play/pause e próxima — tudo desenhado em SVG.
 
 Os botões são apenas visuais. A música começa no toque da carta e a **barra de
 progresso corre junto com o áudio em loop** — quando a música termina, ela

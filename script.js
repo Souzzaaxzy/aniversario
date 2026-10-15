@@ -13,9 +13,7 @@
   /* player */
   const audio = document.getElementById("bgAudio");
   const player = document.getElementById("player");
-  const playerCover = document.getElementById("playerCover");
   const playerFill = document.getElementById("playerFill");
-  const playerKnob = document.getElementById("playerKnob");
   const playerCurrent = document.getElementById("playerCurrent");
   const playerDuration = document.getElementById("playerDuration");
 
@@ -122,7 +120,6 @@
     const pct = dur > 0 ? (cur / dur) * 100 : 0;
 
     playerFill.style.width = pct + "%";
-    playerKnob.style.left = pct + "%";
     playerCurrent.textContent = formatTime(cur);
   }
 
@@ -142,50 +139,6 @@
     // ao dar a volta (loop), a barra reinicia junto com o áudio
     audio.addEventListener("seeked", updateProgress);
     window.requestAnimationFrame(progressLoop);
-  }
-
-  /* ---------------------------------------------------------------------
-     Tinta do fundo: extrai a cor dominante da capa e aplica no gradiente,
-     como o Spotify faz na tela "tocando agora".
-     --------------------------------------------------------------------- */
-  function applyCoverTint() {
-    if (!playerCover) return;
-
-    const extract = () => {
-      try {
-        const size = 32;
-        const cnv = document.createElement("canvas");
-        cnv.width = size;
-        cnv.height = size;
-        const ctx = cnv.getContext("2d");
-        ctx.drawImage(playerCover, 0, 0, size, size);
-        const data = ctx.getImageData(0, 0, size, size).data;
-
-        let r = 0, g = 0, b = 0, n = 0;
-        for (let i = 0; i < data.length; i += 4) {
-          r += data[i]; g += data[i + 1]; b += data[i + 2]; n++;
-        }
-        r = Math.round(r / n); g = Math.round(g / n); b = Math.round(b / n);
-
-        // cor de cima: mais viva; cor de baixo: bem escura, puxada da mesma
-        const tint = `rgb(${boost(r)}, ${boost(g)}, ${boost(b)})`;
-        const dark = `rgb(${d(r)}, ${d(g)}, ${d(b)})`;
-
-        whitepage.style.setProperty("--tint", tint);
-        whitepage.style.setProperty("--tint-dark", dark);
-      } catch (e) { /* canvas bloqueado — mantém o gradiente padrão */ }
-    };
-
-    // clareia levemente para o topo (como no Spotify)
-    const boost = (v) => Math.min(255, Math.round(v * 1.15 + 18));
-    // escurece bastante para a base
-    const d = (v) => Math.round(v * 0.22 + 6);
-
-    if (playerCover.complete && playerCover.naturalWidth > 0) {
-      extract();
-    } else {
-      playerCover.addEventListener("load", extract, { once: true });
-    }
   }
 
   /* ---------------------------------------------------------------------
@@ -222,7 +175,6 @@
   function init() {
     buildDecorations();
     initPlayer();
-    applyCoverTint();
     letter.addEventListener("click", openLetter);
   }
 
