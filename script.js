@@ -9,6 +9,8 @@
   const letter = document.getElementById("letter");
   const decoField = document.getElementById("decoField");
   const whitepage = document.getElementById("whitepage");
+  const whitepageInner = document.getElementById("whitepageInner");
+  const namesPanel = document.getElementById("namesPanel");
 
   /* player */
   const audio = document.getElementById("bgAudio");
@@ -153,6 +155,12 @@
     player.classList.remove("is-paused");
   }
 
+  /* rola automaticamente para a próxima parte (os nomes) */
+  function scrollToNames() {
+    if (!whitepageInner || !namesPanel) return;
+    whitepageInner.scrollTo({ top: namesPanel.offsetTop, behavior: "smooth" });
+  }
+
   function openLetter() {
     if (isOpen) return;
     isOpen = true;
@@ -169,6 +177,9 @@
     window.setTimeout(() => {
       whitepage.classList.add("is-visible");
       whitepage.setAttribute("aria-hidden", "false");
+
+      // 3 segundos vendo o card do player, então o scroll vai para os nomes
+      window.setTimeout(scrollToNames, 3000);
     }, 2250);
   }
 

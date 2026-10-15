@@ -204,6 +204,7 @@
   <section class="whitepage" id="whitepage" aria-hidden="true">
     <div class="whitepage__inner" id="whitepageInner">
 
+      <div class="panel panel--player">
       <!-- dois personagens apoiados no topo do card, olhando um para o outro -->
       <div class="couple" aria-hidden="true">
         <!-- menino (à esquerda, olhando para a direita) -->
@@ -380,6 +381,37 @@
           </button>
         </div>
 
+      </div>
+      </div>
+
+      <!-- segunda tela: os nomes -->
+      <div class="panel panel--names" id="namesPanel">
+        <div class="names">
+          <p class="names__name">Leo</p>
+          <svg class="names__heart" viewBox="0 0 120 108" aria-hidden="true">
+            <defs>
+              <linearGradient id="nameHeart" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff5f6d" />
+                <stop offset="0.5" stop-color="#e0245e" />
+                <stop offset="1" stop-color="#b0114a" />
+              </linearGradient>
+              <radialGradient id="nameHeartGlow" cx="0.5" cy="0.4" r="0.6">
+                <stop offset="0" stop-color="#ff8aa0" stop-opacity="0.75" />
+                <stop offset="1" stop-color="#ff8aa0" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <ellipse cx="60" cy="54" rx="58" ry="52" fill="url(#nameHeartGlow)" />
+            <path d="M60 104 C18 76 6 52 6 34 C6 17 19 6 34 6 C45 6 54 12 60 22 C66 12 75 6 86 6 C101 6 114 17 114 34 C114 52 102 76 60 104 Z"
+              fill="url(#nameHeart)" />
+            <path d="M42 22 C33 22 27 29 27 38" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity="0.6" />
+          </svg>
+          <p class="names__name">Gigica</p>
+        </div>
+        <div class="names__ornament" aria-hidden="true">
+          <span></span>
+          <svg class="names__star" viewBox="0 0 24 32"><use href="#star4" /></svg>
+          <span></span>
+        </div>
       </div>
 
     </div>

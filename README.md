@@ -21,6 +21,11 @@ Os botões são apenas visuais. A música começa no toque da carta e a **barra 
 progresso corre junto com o áudio em loop** — quando a música termina, ela
 reinicia do começo.
 
+Depois de **3 segundos** vendo o card do player, a tela **rola automaticamente**
+para a segunda parte: uma tela sóbria com os dois nomes grandes (**Leo** e
+**Gigica**) separados por um coração. A rolagem usa *scroll snap*, então dá pra
+voltar e avançar arrastando também.
+
 ## Estrutura
 
 ```
