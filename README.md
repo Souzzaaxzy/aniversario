@@ -26,9 +26,15 @@ para a segunda parte: uma tela sóbria com os dois nomes grandes (**Leo** e
 **Gigica**) separados por um coração. A rolagem usa *scroll snap*, então dá pra
 voltar e avançar arrastando também.
 
-Quando a segunda tela aparece, os **dois personagens entram em cena**: o menino
-surge da borda esquerda e a menina da direita, vêm **pulando** até o centro e
-**abraçam o coração**. Eles continuam pulando suavemente ali, abraçados.
+Quando a segunda tela aparece, começa uma pequena cena:
+
+1. Depois de **2 segundos**, os dois personagens entram: o menino pela borda
+   esquerda e a menina pela direita, vindo **pulando** até o centro.
+2. O menino **entrega um anel** para a menina.
+3. A menina pega o anel e **saem mini corações** da cabeça dela.
+4. Os dois **se abraçam** e travam nesse abraço.
+5. Logo depois, **um coração grande sobe atrás deles**, cobrindo o casal, e
+   eles ficam parados abraçados dentro do coração.
 
 ## Estrutura
 

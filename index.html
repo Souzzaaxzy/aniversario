@@ -398,7 +398,8 @@
           <p class="names__name">Leo</p>
 
           <div class="names__stage" id="namesStage">
-            <svg class="names__heart" viewBox="0 0 120 108" aria-hidden="true">
+            <!-- coração grande que sobe atrás deles no final -->
+            <svg class="stage__bigheart" viewBox="0 0 120 108" aria-hidden="true">
               <defs>
                 <linearGradient id="nameHeart" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0" stop-color="#ff5f6d" />
@@ -411,11 +412,25 @@
                 </radialGradient>
               </defs>
               <ellipse cx="60" cy="54" rx="58" ry="52" fill="url(#nameHeartGlow)" />
-              <path class="names__heartShape"
-                d="M60 104 C18 76 6 52 6 34 C6 17 19 6 34 6 C45 6 54 12 60 22 C66 12 75 6 86 6 C101 6 114 17 114 34 C114 52 102 76 60 104 Z"
+              <path d="M60 104 C18 76 6 52 6 34 C6 17 19 6 34 6 C45 6 54 12 60 22 C66 12 75 6 86 6 C101 6 114 17 114 34 C114 52 102 76 60 104 Z"
                 fill="url(#nameHeart)" />
               <path d="M42 22 C33 22 27 29 27 38" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity="0.6" />
             </svg>
+
+            <!-- anel que o menino entrega -->
+            <svg class="stage__ring" viewBox="0 0 44 44" aria-hidden="true">
+              <ellipse cx="22" cy="27" rx="13" ry="13" fill="none" stroke="#f6c453" stroke-width="4.5" />
+              <ellipse cx="22" cy="27" rx="13" ry="13" fill="none" stroke="#fff1c2" stroke-width="1.4" opacity="0.8" />
+              <path d="M22 6 l4.5 6 l-4.5 5 l-4.5 -5 Z" fill="#8fd3ff" stroke="#ffffff" stroke-width="1" />
+            </svg>
+
+            <!-- mini corações que saem da cabeça dela -->
+            <div class="sparks" aria-hidden="true">
+              <svg class="spark spark--1" viewBox="0 0 24 22"><path d="M12 21C4 15 1 10 2 6c1-4 7-5 10 0 3-5 9-4 10 0 1 4-2 9-10 15Z" fill="#ff4d6d"/></svg>
+              <svg class="spark spark--2" viewBox="0 0 24 22"><path d="M12 21C4 15 1 10 2 6c1-4 7-5 10 0 3-5 9-4 10 0 1 4-2 9-10 15Z" fill="#ff8fa3"/></svg>
+              <svg class="spark spark--3" viewBox="0 0 24 22"><path d="M12 21C4 15 1 10 2 6c1-4 7-5 10 0 3-5 9-4 10 0 1 4-2 9-10 15Z" fill="#ff4d6d"/></svg>
+              <svg class="spark spark--4" viewBox="0 0 24 22"><path d="M12 21C4 15 1 10 2 6c1-4 7-5 10 0 3-5 9-4 10 0 1 4-2 9-10 15Z" fill="#ffb3c1"/></svg>
+            </div>
 
             <!-- menino vem da esquerda -->
             <div class="walker walker--boy" aria-hidden="true">
