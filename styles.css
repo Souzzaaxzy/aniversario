@@ -302,8 +302,11 @@ body {
   height: auto;
   display: block;
 }
-/* aproxima os dois, virados um para o outro */
-.couple__char--boy { margin-right: -16px; }
+/* o menino é um pouco mais alto que a menina */
+.couple__char--boy {
+  width: clamp(116px, 37vw, 168px);
+  margin-right: -16px;
+}
 .couple__char--girl { margin-left: -16px; }
 
 /* --------------------------------------------------------------------------
