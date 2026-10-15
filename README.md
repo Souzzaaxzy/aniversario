@@ -12,6 +12,10 @@ no estilo do widget "tocando agora" do Centro de Controle do iOS**: capa (a foto
 título e artista, barra de progresso com tempos e os controles de anterior,
 play/pause e próxima — tudo desenhado em SVG.
 
+Acima do cartão ficam **dois personagens** (um menino e uma menina) apoiados no
+topo do card, olhando um para o outro. Também são desenhados em SVG, com
+estilo chibi.
+
 Os botões são apenas visuais. A música começa no toque da carta e a **barra de
 progresso corre junto com o áudio em loop** — quando a música termina, ela
 reinicia do começo.

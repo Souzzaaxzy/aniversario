@@ -280,12 +280,38 @@ body {
   width: 100%;
   max-width: 360px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+/* --------------------------------------------------------------------------
+   Dois personagens apoiados no topo do card, olhando um para o outro
+   -------------------------------------------------------------------------- */
+.couple {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: -10px; /* encosta no topo do card */
+  pointer-events: none;
+}
+.couple__char {
+  width: clamp(84px, 27vw, 118px);
+  height: auto;
+  display: block;
+}
+/* aproxima os dois, virados um para o outro */
+.couple__char--boy { margin-right: -14px; }
+.couple__char--girl { margin-left: -14px; }
 
 /* --------------------------------------------------------------------------
    Widget
    -------------------------------------------------------------------------- */
 .player {
+  position: relative;
+  z-index: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
