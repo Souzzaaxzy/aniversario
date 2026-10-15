@@ -298,13 +298,13 @@ body {
   pointer-events: none;
 }
 .couple__char {
-  width: clamp(84px, 27vw, 118px);
+  width: clamp(104px, 33vw, 150px);
   height: auto;
   display: block;
 }
 /* aproxima os dois, virados um para o outro */
-.couple__char--boy { margin-right: -14px; }
-.couple__char--girl { margin-left: -14px; }
+.couple__char--boy { margin-right: -16px; }
+.couple__char--girl { margin-left: -16px; }
 
 /* --------------------------------------------------------------------------
    Widget
