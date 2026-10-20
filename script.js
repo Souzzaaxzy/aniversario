@@ -205,38 +205,29 @@
       if (whitepageInner && nextPanel) {
         whitepageInner.scrollTo({ top: nextPanel.offsetTop, behavior: "smooth" });
       }
-      window.setTimeout(typeLetter, 900);
+      window.setTimeout(buildConfetti, 900);
     }, 10600);
   }
 
-  /* revela a mensagem palavra por palavra */
-  function typeLetter() {
-    const el = document.getElementById("letterText");
-    if (!el || el.dataset.typed === "1") return;
-    el.dataset.typed = "1";
+  /* monta os confetes coloridos caindo na tela da mensagem */
+  function buildConfetti() {
+    const box = document.getElementById("confetti");
+    if (!box || box.dataset.built === "1") return;
+    box.dataset.built = "1";
 
-    const text = el.textContent;
-    el.textContent = "";
-
-    /* separa em tokens mantendo os espaços e as quebras de linha */
-    const tokens = text.split(/(\s+)/).filter((t) => t.length > 0);
-
-    tokens.forEach((tok) => {
-      if (/^\s+$/.test(tok)) {
-        /* espaços e quebras viram nós de texto normais */
-        el.appendChild(document.createTextNode(tok));
-      } else {
-        const span = document.createElement("span");
-        span.className = "w";
-        span.textContent = tok;
-        el.appendChild(span);
-      }
-    });
-
-    const words = el.querySelectorAll(".w");
-    words.forEach((w, i) => {
-      window.setTimeout(() => w.classList.add("is-shown"), 460 * i);
-    });
+    const colors = ["#ff6b8a", "#5db3ff", "#ffd24a", "#9d7bff", "#5fd39a", "#ff9f43"];
+    const count = 60;
+    for (let i = 0; i < count; i++) {
+      const c = document.createElement("i");
+      c.style.left = Math.random() * 100 + "%";
+      c.style.background = colors[i % colors.length];
+      c.style.animationDuration = (3.5 + Math.random() * 3.5) + "s";
+      c.style.animationDelay = (-Math.random() * 6) + "s";
+      c.style.width = (6 + Math.random() * 6) + "px";
+      c.style.height = (10 + Math.random() * 8) + "px";
+      if (i % 3 === 0) c.style.borderRadius = "50%";
+      box.appendChild(c);
+    }
   }
 
   /* rola automaticamente para a próxima parte (os nomes) */

@@ -710,9 +710,13 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Quinta tela: a mensagem, aparecendo palavra por palavra
+   Quinta tela: a mensagem, com confetes e balões ao redor
    -------------------------------------------------------------------------- */
+.panel--letter { position: relative; overflow: hidden; }
+
 .letter-text {
+  position: relative;
+  z-index: 2;
   width: 100%;
   max-width: 32ch;
   margin: 0 auto;
@@ -724,22 +728,45 @@ body {
   letter-spacing: 0.005em;
   color: #1c1c1c;
   white-space: pre-line;
+  text-shadow: 0 2px 12px rgba(255,255,255,0.85);
 }
-.letter-text .w {
-  display: inline-block;
+
+/* balões flutuando nas laterais */
+.balloons { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.balloon {
+  position: absolute;
+  width: clamp(46px, 15vw, 74px);
+  height: auto;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.12));
+}
+.balloon--1 { left: 4%;  top: 12%;  animation: float1 5.5s ease-in-out infinite; }
+.balloon--2 { right: 4%; top: 20%;  animation: float2 6.5s ease-in-out infinite; }
+.balloon--3 { left: 9%;  bottom: 14%; animation: float2 6s ease-in-out infinite; }
+.balloon--4 { right: 8%; bottom: 10%; animation: float1 7s ease-in-out infinite; }
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-16px) rotate(3deg); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) rotate(3deg); }
+  50%      { transform: translateY(-20px) rotate(-3deg); }
+}
+
+/* confetes caindo */
+.confetti { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.confetti i {
+  position: absolute;
+  top: -12%;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
   opacity: 0;
-  transform: translateY(6px);
-  filter: blur(3px);
-  transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+  animation: confettiFall linear infinite;
 }
-.letter-text .w.is-shown {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-/* cursor piscando no fim da última palavra revelada */
-.letter-text .w:last-child::after {
-  content: "";
+@keyframes confettiFall {
+  0%   { opacity: 0; transform: translateY(-10vh) rotate(0deg); }
+  10%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(120vh) rotate(720deg); }
 }
 
 .names__ornament {
@@ -1037,5 +1064,5 @@ body {
   .names__name--melt::after { display: none; }
   .show__boy, .show__girl, .show__hand, .show__happy-eyes,
   .show__open-eyes, .show__mouth, .show__spark { animation: none; }
-  .letter-text .w { opacity: 1; transform: none; filter: none; }
+  .balloon, .confetti i { animation: none; }
 }

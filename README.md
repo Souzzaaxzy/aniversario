@@ -50,9 +50,9 @@ redor. Em seguida a tela desce para a próxima parte.
 
 > A música é única do início ao fim (não há troca de faixa).
 
-Em seguida a tela desce para a **mensagem de aniversário**, que aparece
-**palavra por palavra** no centro da tela (com um leve desfoque que vai
-sumindo). O texto fica em `#letterText` no `index.html`.
+Em seguida a tela desce para a **mensagem de aniversário**, centralizada e com
+decoração festiva: **balões** flutuando nas laterais e **confetes** coloridos
+caindo. O texto fica em `#letterText` no `index.html`.
 
 Na segunda tela (depois de abrir a cartinha), o fundo tem um padrão discreto de
 **Prestígio** (metade embalagem azul, metade chocolate com a ponta mordida
