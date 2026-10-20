@@ -54,9 +54,8 @@ body {
   overflow: hidden;
   isolation: isolate;
 
-  /* fundo branco com textura sutil de papel + luz difusa + prestígios */
+  /* fundo branco com textura sutil de papel + luz difusa */
   background:
-    url("prestigio.svg") left top / 300px 300px repeat,
     radial-gradient(125% 85% at 50% 32%, #ffffff 0%, #fdfdfc 58%, #f7f7f5 100%);
 }
 
