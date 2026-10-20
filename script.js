@@ -235,7 +235,7 @@
 
     const words = el.querySelectorAll(".w");
     words.forEach((w, i) => {
-      window.setTimeout(() => w.classList.add("is-shown"), 150 * i);
+      window.setTimeout(() => w.classList.add("is-shown"), 460 * i);
     });
   }
 
