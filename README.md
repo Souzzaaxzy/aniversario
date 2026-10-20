@@ -49,7 +49,10 @@ direita, descem outra escada e param no meio. No fim, a menina faz uma
 redor. Em seguida a tela desce para a próxima parte.
 
 > A música é única do início ao fim (não há troca de faixa).
-> A próxima parte (a tela depois da cena) ainda será feita.
+
+Em seguida a tela desce para a **mensagem de aniversário**, que aparece
+**palavra por palavra** no centro da tela (com um leve desfoque que vai
+sumindo). O texto fica em `#letterText` no `index.html`.
 
 Na segunda tela (depois de abrir a cartinha), o fundo tem um padrão discreto de
 **Prestígio** (metade embalagem azul, metade chocolate com a ponta mordida

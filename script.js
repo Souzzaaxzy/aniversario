@@ -205,7 +205,38 @@
       if (whitepageInner && nextPanel) {
         whitepageInner.scrollTo({ top: nextPanel.offsetTop, behavior: "smooth" });
       }
+      window.setTimeout(typeLetter, 900);
     }, 10600);
+  }
+
+  /* revela a mensagem palavra por palavra */
+  function typeLetter() {
+    const el = document.getElementById("letterText");
+    if (!el || el.dataset.typed === "1") return;
+    el.dataset.typed = "1";
+
+    const text = el.textContent;
+    el.textContent = "";
+
+    /* separa em tokens mantendo os espaços e as quebras de linha */
+    const tokens = text.split(/(\s+)/).filter((t) => t.length > 0);
+
+    tokens.forEach((tok) => {
+      if (/^\s+$/.test(tok)) {
+        /* espaços e quebras viram nós de texto normais */
+        el.appendChild(document.createTextNode(tok));
+      } else {
+        const span = document.createElement("span");
+        span.className = "w";
+        span.textContent = tok;
+        el.appendChild(span);
+      }
+    });
+
+    const words = el.querySelectorAll(".w");
+    words.forEach((w, i) => {
+      window.setTimeout(() => w.classList.add("is-shown"), 150 * i);
+    });
   }
 
   /* rola automaticamente para a próxima parte (os nomes) */

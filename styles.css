@@ -709,6 +709,39 @@ body {
   50%      { opacity: 1; transform: scale(1.1) rotate(35deg); }
 }
 
+/* --------------------------------------------------------------------------
+   Quinta tela: a mensagem, aparecendo palavra por palavra
+   -------------------------------------------------------------------------- */
+.letter-text {
+  width: 100%;
+  max-width: 32ch;
+  margin: 0 auto;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: clamp(17px, 4.7vw, 21px);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.005em;
+  color: #1c1c1c;
+  white-space: pre-line;
+}
+.letter-text .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  filter: blur(3px);
+  transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+}
+.letter-text .w.is-shown {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+/* cursor piscando no fim da última palavra revelada */
+.letter-text .w:last-child::after {
+  content: "";
+}
+
 .names__ornament {
   display: flex;
   align-items: center;
@@ -1004,4 +1037,5 @@ body {
   .names__name--melt::after { display: none; }
   .show__boy, .show__girl, .show__hand, .show__happy-eyes,
   .show__open-eyes, .show__mouth, .show__spark { animation: none; }
+  .letter-text .w { opacity: 1; transform: none; filter: none; }
 }
