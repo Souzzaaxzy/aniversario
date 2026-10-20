@@ -607,23 +607,9 @@
         </div>
       </div>
 
-      <!-- quarta tela: a cena do menino com a menina + máquina de música -->
+      <!-- quarta tela: o casal desce a "escada invisível" e ela fica feliz -->
       <div class="panel panel--show" id="showPanel">
         <div class="show" id="show" aria-hidden="true">
-
-          <!-- máquina de música na parede (esquerda) -->
-          <div class="show__machine" id="showMachine">
-            <svg viewBox="0 0 90 120" aria-hidden="true">
-              <rect x="6" y="8" width="78" height="104" rx="10" fill="#7a4a24"/>
-              <rect x="6" y="8" width="78" height="104" rx="10" fill="none" stroke="#4a2a10" stroke-width="2"/>
-              <rect x="14" y="16" width="62" height="46" rx="6" fill="#c98a4a"/>
-              <rect x="14" y="16" width="62" height="46" rx="6" fill="none" stroke="#8a5624" stroke-width="2"/>
-              <circle cx="34" cy="70" r="6" fill="#2b2b30"/>
-              <circle cx="56" cy="70" r="6" fill="#2b2b30"/>
-              <rect x="20" y="88" width="50" height="8" rx="4" fill="#4a2a10"/>
-              <rect x="20" y="100" width="34" height="6" rx="3" fill="#4a2a10"/>
-            </svg>
-          </div>
 
           <!-- menino -->
           <div class="show__boy" id="showBoy">
@@ -674,28 +660,38 @@
               </defs>
               <path d="M24 72 A56 56 0 0 1 136 72 L136 152 Q80 172 24 152 Z" fill="url(#sGirlHair)"/>
               <path d="M80 134 C62 134 53 160 48 200 L112 200 C107 160 98 134 80 134 Z" fill="url(#sGirlDress)"/>
+              <!-- braço esquerdo fica abaixado; o direito sobe para a boca -->
               <g class="sarm sarm--l"><path d="M56 150 C40 162 37 182 42 200" fill="none" stroke="url(#sGirlSkin)" stroke-width="13" stroke-linecap="round"/></g>
-              <g class="sarm sarm--r"><path d="M104 150 C120 162 123 182 118 200" fill="none" stroke="url(#sGirlSkin)" stroke-width="13" stroke-linecap="round"/></g>
+              <g class="sarm sarm--r show__hand">
+                <path d="M104 150 C120 158 118 168 106 172" fill="none" stroke="url(#sGirlSkin)" stroke-width="13" stroke-linecap="round"/>
+                <circle cx="102" cy="168" r="9" fill="#f3c6a0"/>
+              </g>
               <rect x="72" y="118" width="16" height="22" rx="8" fill="#e7bd91"/>
               <circle cx="80" cy="72" r="54" fill="url(#sGirlSkin)"/>
               <path d="M28 60 A54 54 0 0 1 132 60 Q120 74 80 74 Q40 74 28 60 Z" fill="url(#sGirlHair)"/>
-              <ellipse class="seye seye--l" cx="66" cy="88" rx="9" ry="12.5" fill="#33241d"/>
-              <ellipse class="seye seye--r" cx="42" cy="88" rx="9" ry="12.5" fill="#33241d"/>
-              <circle cx="63" cy="83" r="3.6" fill="#ffffff"/><circle cx="39" cy="83" r="3.6" fill="#ffffff"/>
-              <ellipse cx="74" cy="103" rx="9" ry="5.5" fill="#f28a97" opacity="0.5"/>
-              <ellipse cx="32" cy="103" rx="9" ry="5.5" fill="#f28a97" opacity="0.5"/>
-              <path d="M48 105 q6 6 12 0" fill="none" stroke="#c07b62" stroke-width="2.6" stroke-linecap="round"/>
-              <!-- venda nos olhos -->
-              <g class="show__blind" id="showBlind">
-                <rect x="18" y="78" width="124" height="20" rx="10" fill="#20242c"/>
-                <rect x="18" y="78" width="124" height="20" rx="10" fill="none" stroke="#0c0e12" stroke-width="2"/>
+              <!-- olhos fechados/felizes (arcos) -->
+              <g class="show__happy-eyes">
+                <path d="M36 92 q8 -9 16 0" fill="none" stroke="#33241d" stroke-width="3.4" stroke-linecap="round"/>
+                <path d="M60 92 q8 -9 16 0" fill="none" stroke="#33241d" stroke-width="3.4" stroke-linecap="round"/>
               </g>
+              <!-- olhos abertos (escondidos no início) -->
+              <g class="show__open-eyes">
+                <ellipse cx="66" cy="88" rx="9" ry="12.5" fill="#33241d"/>
+                <ellipse cx="42" cy="88" rx="9" ry="12.5" fill="#33241d"/>
+                <circle cx="63" cy="83" r="3.6" fill="#ffffff"/><circle cx="39" cy="83" r="3.6" fill="#ffffff"/>
+              </g>
+              <ellipse cx="74" cy="103" rx="9" ry="5.5" fill="#f28a97" opacity="0.55"/>
+              <ellipse cx="32" cy="103" rx="9" ry="5.5" fill="#f28a97" opacity="0.55"/>
+              <!-- boquinha de felicidade (sorriso aberto) -->
+              <path class="show__mouth" d="M44 104 q10 14 20 0 q-10 6 -20 0 Z" fill="#8a3b3b"/>
             </svg>
           </div>
 
-          <!-- surpresa: mãozinha na boca + interrogação -->
-          <div class="show__surprise" id="showSurprise">
-            <span class="show__q">?</span>
+          <!-- brilhos de felicidade -->
+          <div class="show__sparks" aria-hidden="true">
+            <span class="show__spark"></span>
+            <span class="show__spark"></span>
+            <span class="show__spark"></span>
           </div>
 
         </div>

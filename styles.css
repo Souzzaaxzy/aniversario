@@ -631,23 +631,9 @@ body {
   --girl-x: 0px;
   --girl-y: 0px;
 }
-.show__machine {
-  position: absolute;
-  left: 2%;
-  bottom: 26%;
-  width: clamp(48px, 15vw, 72px);
-  z-index: 1;
-}
-.show__machine svg { width: 100%; height: auto; display: block; }
-@keyframes machineOn {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  30% { transform: translateY(-3px) rotate(-2deg); }
-  60% { transform: translateY(0) rotate(2deg); }
-}
-
 .show__boy, .show__girl {
   position: absolute;
-  bottom: 8%;
+  top: 4%;
   width: clamp(84px, 26vw, 128px);
   z-index: 3;
 }
@@ -657,76 +643,71 @@ body {
 
 /* espelha a menina para olhar para a esquerda (o menino) */
 .show__girl svg { transform: scaleX(-1); }
-/* os olhos da menina precisam girar junto; como o svg está espelhado, ok */
 
-/* venda escondida no início */
-.show__blind { opacity: 0; }
-.panel--show.is-blind .show__blind { opacity: 1; transition: opacity 0.3s ease; }
-
-/* braços (preparados para animar) */
+/* braços (menina) */
 .sarm { transform-box: fill-box; }
 .sarm--l { transform-origin: 60% 8%; }
 .sarm--r { transform-origin: 40% 8%; }
+/* a mão na boca só aparece no fim (felicidade) */
+.show__hand { transform-box: fill-box; transform-origin: 55% 8%; opacity: 0; }
+.show__happy-eyes { opacity: 0; }
+.show__mouth { opacity: 0; }
 
-.show__surprise {
+.show__sparks {
   position: absolute;
-  left: 62%;
-  bottom: 60%;
-  opacity: 0;
+  left: 56%;
+  bottom: 6%;
   z-index: 5;
+  pointer-events: none;
 }
-.show__q {
-  font-family: var(--serif);
-  font-size: clamp(28px, 9vw, 46px);
-  font-weight: 700;
-  color: #e0245e;
+.show__spark {
+  position: absolute;
+  width: clamp(12px, 3.6vw, 18px);
+  height: clamp(12px, 3.6vw, 18px);
+  opacity: 0;
+  background:
+    radial-gradient(circle, #ffe27a 0 30%, transparent 32%),
+    conic-gradient(from 0deg, #ffd24a, transparent 25%, #ffd24a 50%, transparent 75%, #ffd24a);
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
 }
-@keyframes surprisePop {
-  0% { opacity: 0; transform: translateY(10px) scale(0.4); }
-  60% { opacity: 1; transform: translateY(-6px) scale(1.2); }
+.show__spark:nth-child(1) { left: 0;   bottom: 0; }
+.show__spark:nth-child(2) { left: 34px; bottom: 30px; }
+.show__spark:nth-child(3) { left: 64px; bottom: 4px; }
+
+/* --- coreografia: escada invisível (esquerda, desce, direita, desce, centro) ---
+   menino e menina fazem o mesmo caminho; a menina fica feliz no fim. */
+.panel--show.is-run .show__boy,
+.panel--show.is-run .show__girl {
+  animation: stairsPath 7.6s ease-in-out forwards;
+}
+@keyframes stairsPath {
+  0%   { transform: translate(0, 0); }           /* início */
+  18%  { transform: translate(-58px, 0); }        /* anda p/ a esquerda */
+  40%  { transform: translate(-58px, 92px); }     /* desce a escada 1 */
+  60%  { transform: translate(64px, 92px); }      /* anda p/ a direita */
+  82%  { transform: translate(64px, 184px); }     /* desce a escada 2 */
+  100% { transform: translate(0, 184px); }        /* para no meio, mais abaixo */
+}
+
+/* no fim: mão na boca, olhos felizes, boquinha e brilhos */
+.panel--show.is-run .show__hand { animation: handUp 0.8s ease-out 7.4s forwards; }
+@keyframes handUp {
+  0%   { opacity: 0; transform: translateY(24px) scale(0.8); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
+.panel--show.is-run .show__happy-eyes { animation: fadeInFast 0.4s ease-out 7.6s forwards; }
+.panel--show.is-run .show__open-eyes  { animation: fadeOutFast 0.4s ease-out 7.6s forwards; }
+.panel--show.is-run .show__mouth { animation: fadeInFast 0.4s ease-out 7.6s forwards; }
+.panel--show.is-run .show__spark:nth-child(1) { animation: sparkTwinkle 1.3s ease-in-out 7.9s infinite; }
+.panel--show.is-run .show__spark:nth-child(2) { animation: sparkTwinkle 1.5s ease-in-out 8.15s infinite; }
+.panel--show.is-run .show__spark:nth-child(3) { animation: sparkTwinkle 1.4s ease-in-out 8.35s infinite; }
 
-/* --- coreografia: uma timeline única por personagem ---
-   menino: vai até a menina -> descem juntos -> volta p/ máquina -> volta p/ trás
-   menina: desce e fica parada no meio
-   O total do menino é 7.9s. */
-.panel--show.is-run .show__boy { animation: boyPath 7.9s ease-in-out forwards; }
-.panel--show.is-run .show__girl { animation: girlPath 3.8s ease-in-out forwards; }
-
-@keyframes boyPath {
-  0%   { transform: translate(0, 0); }
-  20%  { transform: translate(120px, 0); }
-  48%  { transform: translate(120px, 120px); }
-  71%  { transform: translate(-30px, 118px); }
-  100% { transform: translate(96px, 120px); }
+@keyframes fadeInFast { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOutFast { from { opacity: 1; } to { opacity: 0; } }
+@keyframes sparkTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50%      { opacity: 1; transform: scale(1.1) rotate(35deg); }
 }
-@keyframes girlPath {
-  0%   { transform: translate(0, 0); }
-  100% { transform: translate(0, 120px); }
-}
-
-/* venda: aparece depois de descerem, some quando ele tira */
-.panel--show.is-run .show__blind { animation: blindShow 8.6s linear forwards; }
-@keyframes blindShow {
-  0%, 52%   { opacity: 0; }
-  58%, 95%  { opacity: 1; }
-  100%      { opacity: 0; }
-}
-
-/* a menina olha para frente e depois para baixo + surpresa */
-.show__girl svg { transform: scaleX(-1) rotate(0deg); transform-origin: 50% 60%; }
-.panel--show.is-run .show__girl svg { animation: girlLook 8.9s ease-in-out forwards; }
-@keyframes girlLook {
-  0%, 90%  { transform: scaleX(-1) rotate(0deg); }
-  100%     { transform: scaleX(-1) rotate(9deg); }
-}
-
-/* a máquina liga por volta dos 5.6s */
-.panel--show.is-run .show__machine { animation: machineOn 0.7s ease-in-out 5.6s 2; }
-
-/* a surpresa aparece por volta dos 8.6s */
-.panel--show.is-run .show__surprise { animation: surprisePop 0.7s ease-out 8.6s forwards; }
 
 .names__ornament {
   display: flex;
@@ -1021,6 +1002,6 @@ body {
   .couple__char, .char__arm, .walker, .walker__hop, .narm,
   .stage__bigheart, .stage__ring, .spark, .drip { animation: none; }
   .names__name--melt::after { display: none; }
-  .show__boy, .show__girl, .show__girl svg, .show__blind,
-  .show__machine, .show__surprise { animation: none; }
+  .show__boy, .show__girl, .show__hand, .show__happy-eyes,
+  .show__open-eyes, .show__mouth, .show__spark { animation: none; }
 }
