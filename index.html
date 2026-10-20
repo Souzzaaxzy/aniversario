@@ -607,6 +607,105 @@
         </div>
       </div>
 
+      <!-- quarta tela: a cena do menino com a menina + máquina de música -->
+      <div class="panel panel--show" id="showPanel">
+        <div class="show" id="show" aria-hidden="true">
+
+          <!-- máquina de música na parede (esquerda) -->
+          <div class="show__machine" id="showMachine">
+            <svg viewBox="0 0 90 120" aria-hidden="true">
+              <rect x="6" y="8" width="78" height="104" rx="10" fill="#7a4a24"/>
+              <rect x="6" y="8" width="78" height="104" rx="10" fill="none" stroke="#4a2a10" stroke-width="2"/>
+              <rect x="14" y="16" width="62" height="46" rx="6" fill="#c98a4a"/>
+              <rect x="14" y="16" width="62" height="46" rx="6" fill="none" stroke="#8a5624" stroke-width="2"/>
+              <circle cx="34" cy="70" r="6" fill="#2b2b30"/>
+              <circle cx="56" cy="70" r="6" fill="#2b2b30"/>
+              <rect x="20" y="88" width="50" height="8" rx="4" fill="#4a2a10"/>
+              <rect x="20" y="100" width="34" height="6" rx="3" fill="#4a2a10"/>
+            </svg>
+          </div>
+
+          <!-- menino -->
+          <div class="show__boy" id="showBoy">
+            <svg viewBox="0 0 160 200" aria-hidden="true">
+              <defs>
+                <linearGradient id="sBoyShirt" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#3a3a42"/><stop offset="1" stop-color="#131316"/>
+                </linearGradient>
+                <linearGradient id="sBoySkin" x1="0.3" y1="0" x2="0.8" y2="1">
+                  <stop offset="0" stop-color="#f8d8b6"/><stop offset="1" stop-color="#eec19a"/>
+                </linearGradient>
+                <linearGradient id="sBoyHair" x1="0" y1="0" x2="0.2" y2="1">
+                  <stop offset="0" stop-color="#8d8d97"/><stop offset="0.45" stop-color="#5c5c66"/><stop offset="1" stop-color="#2a2a30"/>
+                </linearGradient>
+              </defs>
+              <path d="M46 200 C46 156 57 134 80 134 C103 134 114 156 114 200 Z" fill="url(#sBoyShirt)"/>
+              <g class="sarm sarm--l"><path d="M56 150 C40 162 37 182 42 200" fill="none" stroke="url(#sBoySkin)" stroke-width="13" stroke-linecap="round"/></g>
+              <g class="sarm sarm--r"><path d="M104 150 C120 162 123 182 118 200" fill="none" stroke="url(#sBoySkin)" stroke-width="13" stroke-linecap="round"/></g>
+              <rect x="72" y="118" width="16" height="22" rx="8" fill="#e7bd91"/>
+              <circle cx="80" cy="72" r="54" fill="url(#sBoySkin)"/>
+              <path d="M26 58 A54 54 0 0 1 134 58 Q120 72 80 72 Q40 72 26 58 Z" fill="url(#sBoyHair)"/>
+              <g fill="url(#sBoyHair)">
+                <circle cx="38" cy="56" r="14"/><circle cx="58" cy="44" r="15"/>
+                <circle cx="80" cy="40" r="15"/><circle cx="102" cy="44" r="15"/><circle cx="122" cy="56" r="14"/>
+              </g>
+              <ellipse class="seye seye--l" cx="94" cy="88" rx="9" ry="12.5" fill="#2b2b30"/>
+              <ellipse class="seye seye--r" cx="118" cy="88" rx="9" ry="12.5" fill="#2b2b30"/>
+              <circle cx="97" cy="83" r="3.6" fill="#ffffff"/><circle cx="121" cy="83" r="3.6" fill="#ffffff"/>
+              <ellipse cx="86" cy="103" rx="9" ry="5.5" fill="#f28a97" opacity="0.5"/>
+              <ellipse cx="128" cy="103" rx="9" ry="5.5" fill="#f28a97" opacity="0.5"/>
+              <path d="M100 105 q6 6 12 0" fill="none" stroke="#c07b62" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- menina -->
+          <div class="show__girl" id="showGirl">
+            <svg viewBox="0 0 160 200" aria-hidden="true">
+              <defs>
+                <linearGradient id="sGirlDress" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#b487dd"/><stop offset="1" stop-color="#8a55bd"/>
+                </linearGradient>
+                <linearGradient id="sGirlSkin" x1="0.3" y1="0" x2="0.8" y2="1">
+                  <stop offset="0" stop-color="#f8d8b6"/><stop offset="1" stop-color="#eec19a"/>
+                </linearGradient>
+                <linearGradient id="sGirlHair" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#4a342a"/><stop offset="1" stop-color="#2f1f18"/>
+                </linearGradient>
+              </defs>
+              <path d="M24 72 A56 56 0 0 1 136 72 L136 152 Q80 172 24 152 Z" fill="url(#sGirlHair)"/>
+              <path d="M80 134 C62 134 53 160 48 200 L112 200 C107 160 98 134 80 134 Z" fill="url(#sGirlDress)"/>
+              <g class="sarm sarm--l"><path d="M56 150 C40 162 37 182 42 200" fill="none" stroke="url(#sGirlSkin)" stroke-width="13" stroke-linecap="round"/></g>
+              <g class="sarm sarm--r"><path d="M104 150 C120 162 123 182 118 200" fill="none" stroke="url(#sGirlSkin)" stroke-width="13" stroke-linecap="round"/></g>
+              <rect x="72" y="118" width="16" height="22" rx="8" fill="#e7bd91"/>
+              <circle cx="80" cy="72" r="54" fill="url(#sGirlSkin)"/>
+              <path d="M28 60 A54 54 0 0 1 132 60 Q120 74 80 74 Q40 74 28 60 Z" fill="url(#sGirlHair)"/>
+              <ellipse class="seye seye--l" cx="66" cy="88" rx="9" ry="12.5" fill="#33241d"/>
+              <ellipse class="seye seye--r" cx="42" cy="88" rx="9" ry="12.5" fill="#33241d"/>
+              <circle cx="63" cy="83" r="3.6" fill="#ffffff"/><circle cx="39" cy="83" r="3.6" fill="#ffffff"/>
+              <ellipse cx="74" cy="103" rx="9" ry="5.5" fill="#f28a97" opacity="0.5"/>
+              <ellipse cx="32" cy="103" rx="9" ry="5.5" fill="#f28a97" opacity="0.5"/>
+              <path d="M48 105 q6 6 12 0" fill="none" stroke="#c07b62" stroke-width="2.6" stroke-linecap="round"/>
+              <!-- venda nos olhos -->
+              <g class="show__blind" id="showBlind">
+                <rect x="18" y="78" width="124" height="20" rx="10" fill="#20242c"/>
+                <rect x="18" y="78" width="124" height="20" rx="10" fill="none" stroke="#0c0e12" stroke-width="2"/>
+              </g>
+            </svg>
+          </div>
+
+          <!-- surpresa: mãozinha na boca + interrogação -->
+          <div class="show__surprise" id="showSurprise">
+            <span class="show__q">?</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- próxima parte (a ser feita) -->
+      <div class="panel panel--next" id="nextPanel">
+        <p class="next__hint">…</p>
+      </div>
+
     </div>
   </section>
 

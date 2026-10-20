@@ -616,6 +616,118 @@ body {
   font-weight: 800;
 }
 
+/* --------------------------------------------------------------------------
+   Quarta tela: o menino cobre os olhos, leva a menina, põe a venda, liga a
+   máquina de música, tira a venda e ela se surpreende.
+   -------------------------------------------------------------------------- */
+.panel--show { position: relative; }
+.show {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  height: clamp(240px, 46vh, 360px);
+  --boy-x: 0px;
+  --boy-y: 0px;
+  --girl-x: 0px;
+  --girl-y: 0px;
+}
+.show__machine {
+  position: absolute;
+  left: 2%;
+  bottom: 26%;
+  width: clamp(48px, 15vw, 72px);
+  z-index: 1;
+}
+.show__machine svg { width: 100%; height: auto; display: block; }
+@keyframes machineOn {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(-3px) rotate(-2deg); }
+  60% { transform: translateY(0) rotate(2deg); }
+}
+
+.show__boy, .show__girl {
+  position: absolute;
+  bottom: 8%;
+  width: clamp(84px, 26vw, 128px);
+  z-index: 3;
+}
+.show__boy { left: 30%; }
+.show__girl { left: 56%; }
+.show__boy svg, .show__girl svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* espelha a menina para olhar para a esquerda (o menino) */
+.show__girl svg { transform: scaleX(-1); }
+/* os olhos da menina precisam girar junto; como o svg está espelhado, ok */
+
+/* venda escondida no início */
+.show__blind { opacity: 0; }
+.panel--show.is-blind .show__blind { opacity: 1; transition: opacity 0.3s ease; }
+
+/* braços (preparados para animar) */
+.sarm { transform-box: fill-box; }
+.sarm--l { transform-origin: 60% 8%; }
+.sarm--r { transform-origin: 40% 8%; }
+
+.show__surprise {
+  position: absolute;
+  left: 62%;
+  bottom: 60%;
+  opacity: 0;
+  z-index: 5;
+}
+.show__q {
+  font-family: var(--serif);
+  font-size: clamp(28px, 9vw, 46px);
+  font-weight: 700;
+  color: #e0245e;
+}
+@keyframes surprisePop {
+  0% { opacity: 0; transform: translateY(10px) scale(0.4); }
+  60% { opacity: 1; transform: translateY(-6px) scale(1.2); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- coreografia: uma timeline única por personagem ---
+   menino: vai até a menina -> descem juntos -> volta p/ máquina -> volta p/ trás
+   menina: desce e fica parada no meio
+   O total do menino é 7.9s. */
+.panel--show.is-run .show__boy { animation: boyPath 7.9s ease-in-out forwards; }
+.panel--show.is-run .show__girl { animation: girlPath 3.8s ease-in-out forwards; }
+
+@keyframes boyPath {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(120px, 0); }
+  48%  { transform: translate(120px, 120px); }
+  71%  { transform: translate(-30px, 118px); }
+  100% { transform: translate(96px, 120px); }
+}
+@keyframes girlPath {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(0, 120px); }
+}
+
+/* venda: aparece depois de descerem, some quando ele tira */
+.panel--show.is-run .show__blind { animation: blindShow 8.6s linear forwards; }
+@keyframes blindShow {
+  0%, 52%   { opacity: 0; }
+  58%, 95%  { opacity: 1; }
+  100%      { opacity: 0; }
+}
+
+/* a menina olha para frente e depois para baixo + surpresa */
+.show__girl svg { transform: scaleX(-1) rotate(0deg); transform-origin: 50% 60%; }
+.panel--show.is-run .show__girl svg { animation: girlLook 8.9s ease-in-out forwards; }
+@keyframes girlLook {
+  0%, 90%  { transform: scaleX(-1) rotate(0deg); }
+  100%     { transform: scaleX(-1) rotate(9deg); }
+}
+
+/* a máquina liga por volta dos 5.6s */
+.panel--show.is-run .show__machine { animation: machineOn 0.7s ease-in-out 5.6s 2; }
+
+/* a surpresa aparece por volta dos 8.6s */
+.panel--show.is-run .show__surprise { animation: surprisePop 0.7s ease-out 8.6s forwards; }
+
 .names__ornament {
   display: flex;
   align-items: center;
@@ -909,4 +1021,6 @@ body {
   .couple__char, .char__arm, .walker, .walker__hop, .narm,
   .stage__bigheart, .stage__ring, .spark, .drip { animation: none; }
   .names__name--melt::after { display: none; }
+  .show__boy, .show__girl, .show__girl svg, .show__blind,
+  .show__machine, .show__surprise { animation: none; }
 }

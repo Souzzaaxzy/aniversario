@@ -12,6 +12,8 @@
   const whitepageInner = document.getElementById("whitepageInner");
   const namesPanel = document.getElementById("namesPanel");
   const resultPanel = document.getElementById("resultPanel");
+  const showPanel = document.getElementById("showPanel");
+  const nextPanel = document.getElementById("nextPanel");
 
   /* player */
   const audio = document.getElementById("bgAudio");
@@ -19,6 +21,11 @@
   const playerFill = document.getElementById("playerFill");
   const playerCurrent = document.getElementById("playerCurrent");
   const playerDuration = document.getElementById("playerDuration");
+
+  /* música nova, que começa quando o menino liga a máquina.
+     Deixe o nome do arquivo aqui quando a faixa nova for adicionada.
+     Ex.: const NEXT_TRACK = "musica-nova.mp3"; */
+  const NEXT_TRACK = "";
 
   const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -181,6 +188,43 @@
     window.setTimeout(() => {
       if (resultPanel) resultPanel.classList.add("is-dripped");
     }, 950);
+
+    /* vendo a carta, desce para a cena do menino com a menina */
+    window.setTimeout(() => {
+      if (whitepageInner && showPanel) {
+        whitepageInner.scrollTo({ top: showPanel.offsetTop, behavior: "smooth" });
+      }
+      window.setTimeout(runShow, 800);
+    }, 3200);
+  }
+
+  /* a cena coreografada: cobre os olhos, descem, venda, música, tira a venda */
+  function runShow() {
+    if (!showPanel || showPanel.classList.contains("is-run")) return;
+    showPanel.classList.remove("is-run");
+    void showPanel.offsetWidth;
+    showPanel.classList.add("is-run");
+
+    /* troca a música (a nova faixa começa quando ele liga a máquina ~5.6s) */
+    window.setTimeout(swapTrack, 5600);
+
+    /* no fim, a tela desce para a próxima parte */
+    window.setTimeout(() => {
+      if (whitepageInner && nextPanel) {
+        whitepageInner.scrollTo({ top: nextPanel.offsetTop, behavior: "smooth" });
+      }
+    }, 10400);
+  }
+
+  /* troca a faixa anterior por uma nova (a música nova vai ser adicionada) */
+  function swapTrack() {
+    if (!audio) return;
+    if (typeof NEXT_TRACK === "string" && NEXT_TRACK) {
+      audio.src = NEXT_TRACK;
+    }
+    audio.currentTime = 0;
+    const p = audio.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
   }
 
   /* rola automaticamente para a próxima parte (os nomes) */

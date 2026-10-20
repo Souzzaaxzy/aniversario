@@ -42,6 +42,16 @@ desenhada** (no estilo de um resultado de app de compatibilidade) com
 "COMPATIBILIDADE", "@minhagotica / cute cute", "Kannon" e "100% de
 compatibilidade". A carta é 100% desenhada em CSS/SVG — não é uma imagem.
 
+Depois da carta de compatibilidade vem uma **cena coreografada**: o menino vai
+até a menina, cobre os olhos dela, os dois descem juntos até o meio, ele põe uma
+**venda** nela, vai até uma **máquina de música** na parede e a liga (trocando a
+faixa atual pela nova, definida em `NEXT_TRACK` no `script.js`), volta para trás
+da menina, tira a venda, e ela se **surpreende** (expressão + "?"). Em seguida a
+tela desce para a próxima parte.
+
+> A música nova entra preenchendo `NEXT_TRACK = "arquivo.mp3"` no `script.js`.
+> A próxima parte (a tela depois da surpresa) ainda será feita.
+
 Na segunda tela (depois de abrir a cartinha), o fundo tem um padrão discreto de
 **Prestígio** (metade embalagem azul, metade chocolate com a ponta mordida
 mostrando o coco), desenhado em SVG (`prestigio.svg`) e repetido suavemente.
